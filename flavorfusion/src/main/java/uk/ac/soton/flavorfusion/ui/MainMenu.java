@@ -17,6 +17,10 @@ public class MainMenu extends JFrame {
         // Set the layout
         setLayout(new BorderLayout());
 
+        // Here we set the BackgroundPanel as the content pane of the frame
+        setContentPane(new BackgroundPanel("/images/Background 2.PNG")); // Replace with your actual image path
+
+
         // Add UI components
         initComponents();
 
@@ -91,3 +95,24 @@ public class MainMenu extends JFrame {
         });
     }
 }
+
+class BackgroundPanel extends JPanel {
+    private Image backgroundImage;
+
+    // Constructor for the BackgroundPanel class
+    public BackgroundPanel(String filePath) {
+        try {
+            backgroundImage = new ImageIcon(getClass().getResource(filePath)).getImage();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        // Draw the background image.
+        g.drawImage(backgroundImage, 0, 0, this.getWidth(), this.getHeight(), this);
+    }
+}
+
