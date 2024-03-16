@@ -1,13 +1,11 @@
-package uk.ac.soton.flavorfusion;
+package uk.ac.soton.flavorfusion.ui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class Instruction extends JFrame{
+public class InstructionMenu extends JFrame{
 
-    public Instruction() {
+    public InstructionMenu() {
         // Set the title of the window
         setTitle("FlavorFusion Instructions");
 
@@ -74,6 +72,6 @@ public class Instruction extends JFrame{
 
 
     public static void main(String[] args) {
-        new Instruction(); // Create and show the instruction page
+        new InstructionMenu(); // Create and show the instruction page
     }
 }
