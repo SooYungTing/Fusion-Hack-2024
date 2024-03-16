@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 public class MainMenu extends JFrame {
 
@@ -32,6 +33,9 @@ public class MainMenu extends JFrame {
 
         // Make the window visible
         setVisible(true);
+
+        setupEscapeKey();
+
     }
 
     private void initComponents() {
@@ -52,7 +56,7 @@ public class MainMenu extends JFrame {
         // Set the layout for the right panel (optional)
         rightPanel.setLayout(new GridLayout(3, 1, 0, 20)); // 3 rows, 1 column, gap of 10 pixels between components
         // Add some space around the components in the right panel (optional)
-        rightPanel.setBorder(BorderFactory.createEmptyBorder(40, 200, 10, 200));
+        rightPanel.setBorder(BorderFactory.createEmptyBorder(10, 200, 10, 200));
         rightPanel.setOpaque(false);
 
         // Add the right panel to the CENTER region of the JFrame
@@ -65,7 +69,8 @@ public class MainMenu extends JFrame {
 
 
         // Set the font for the "Start" button
-        startButton.setFont(new Font("Arial", Font.BOLD, 24));
+        //startButton.setFont(new Font("Arial", Font.BOLD, 24));
+        startButton.setFont(new Font("Arial", Font.BOLD, 32));
 
         // Add the "Start" button to the right panel
         rightPanel.add(startButton);
@@ -77,7 +82,8 @@ public class MainMenu extends JFrame {
 
 
         // Set the font for the "Instruction" button
-        instructionButton.setFont(new Font("Arial", Font.BOLD, 24));
+        //instructionButton.setFont(new Font("Arial", Font.BOLD, 24));
+        instructionButton.setFont(new Font("Arial", Font.BOLD, 32));
         // Add the "Instruction" button to the right panel
         rightPanel.add(instructionButton);
 
@@ -88,7 +94,8 @@ public class MainMenu extends JFrame {
 
 
         // Set the font for the "Exit" button
-        exitButton.setFont(new Font("Arial", Font.BOLD, 24));
+        //exitButton.setFont(new Font("Arial", Font.BOLD, 24));
+        exitButton.setFont(new Font("Arial", Font.BOLD, 32));
         // Add action listener to the "Exit" button
         exitButton.addActionListener(new ActionListener() {
             @Override
@@ -101,15 +108,26 @@ public class MainMenu extends JFrame {
 
     }
 
-    /*private void makeButtonTransparent(JButton button) {
-        button.setOpaque(false);
-        button.setContentAreaFilled(false);
-        button.setBorderPainted(false);
-        button.setFocusPainted(false); // This will remove the focus border when clicked.
-        button.setBorder(BorderFactory.createEmptyBorder()); // This will remove the border completely.
-        button.setFont(new Font("Arial", Font.BOLD, 24));
-        button.setForeground(Color.BLACK); // Set this to the color you want for the text.
-    }*/
+    private void setupEscapeKey() {
+        // Get the InputMap and ActionMap of the root pane to set up key bindings
+        InputMap inputMap = getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap actionMap = getRootPane().getActionMap();
+
+        // Define the key stroke for the ESC key
+        KeyStroke escapeKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
+
+        // Put the key stroke in the input map with a key "ESCAPE"
+        inputMap.put(escapeKeyStroke, "ESCAPE");
+
+        // Now put an action in the action map that quits the application when the "ESCAPE" key is invoked
+        actionMap.put("ESCAPE", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Action to be performed when the ESC key is pressed
+                System.exit(0);
+            }
+        });
+    }
     private void makeButtonTransparent(JButton button) {
         button.setOpaque(false);
         button.setContentAreaFilled(false);
