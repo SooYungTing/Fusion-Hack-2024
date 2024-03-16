@@ -9,8 +9,5 @@
         <module name="flavorfusion" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="flavorfusion" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>
