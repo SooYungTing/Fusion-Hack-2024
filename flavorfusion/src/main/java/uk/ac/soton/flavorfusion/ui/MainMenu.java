@@ -53,18 +53,29 @@ public class MainMenu extends JFrame {
         rightPanel.setLayout(new GridLayout(3, 1, 0, 20)); // 3 rows, 1 column, gap of 10 pixels between components
         // Add some space around the components in the right panel (optional)
         rightPanel.setBorder(BorderFactory.createEmptyBorder(40, 200, 10, 200));
+        rightPanel.setOpaque(false);
+
         // Add the right panel to the CENTER region of the JFrame
         add(rightPanel, BorderLayout.CENTER);
 
         // Create the "Start" button
         JButton startButton = new JButton("Start");
+        makeButtonTransparent(startButton);
+        addButtonHoverEffect(startButton, Color.GRAY, Color.BLACK);
+
+
         // Set the font for the "Start" button
         startButton.setFont(new Font("Arial", Font.BOLD, 24));
+
         // Add the "Start" button to the right panel
         rightPanel.add(startButton);
 
         // Create the "Instruction" button
         JButton instructionButton = new JButton("Instruction");
+        makeButtonTransparent(instructionButton);
+        addButtonHoverEffect(instructionButton, Color.GRAY, Color.BLACK);
+
+
         // Set the font for the "Instruction" button
         instructionButton.setFont(new Font("Arial", Font.BOLD, 24));
         // Add the "Instruction" button to the right panel
@@ -72,6 +83,10 @@ public class MainMenu extends JFrame {
 
         // Create the "Exit" button
         JButton exitButton = new JButton("Exit");
+        makeButtonTransparent(exitButton);
+        addButtonHoverEffect(exitButton, Color.GRAY, Color.BLACK);
+
+
         // Set the font for the "Exit" button
         exitButton.setFont(new Font("Arial", Font.BOLD, 24));
         // Add action listener to the "Exit" button
@@ -85,6 +100,38 @@ public class MainMenu extends JFrame {
         rightPanel.add(exitButton);
 
     }
+
+    /*private void makeButtonTransparent(JButton button) {
+        button.setOpaque(false);
+        button.setContentAreaFilled(false);
+        button.setBorderPainted(false);
+        button.setFocusPainted(false); // This will remove the focus border when clicked.
+        button.setBorder(BorderFactory.createEmptyBorder()); // This will remove the border completely.
+        button.setFont(new Font("Arial", Font.BOLD, 24));
+        button.setForeground(Color.BLACK); // Set this to the color you want for the text.
+    }*/
+    private void makeButtonTransparent(JButton button) {
+        button.setOpaque(false);
+        button.setContentAreaFilled(false);
+        button.setBorderPainted(false);
+        button.setFocusPainted(false); // Remove the focus border when clicked.
+        button.setBorder(BorderFactory.createEmptyBorder()); // Remove the border completely.
+        button.setFont(new Font("Arial", Font.BOLD, 24));
+        button.setForeground(Color.BLACK); // Initial text color.
+    }
+
+    private void addButtonHoverEffect(JButton button, Color hoverColor, Color originalColor) {
+        button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button.setForeground(hoverColor);
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button.setForeground(originalColor);
+            }
+        });
+    }
+
 
     public static void main(String[] args) {
         // Ensure the GUI is created on the Event Dispatch Thread for thread safety
