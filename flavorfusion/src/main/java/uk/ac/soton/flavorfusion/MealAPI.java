@@ -44,7 +44,7 @@ public class MealAPI {
         in.close();
 
         // print response
-        System.out.println(response.toString());
+        //System.out.println(response.toString());
         // analyse JSON response
         jsonResult = new JSONObject(response.toString());
 
@@ -54,15 +54,15 @@ public class MealAPI {
           String idCategory = category.getString("idCategory");
           String strCategory = category.getString("strCategory");
           categoriesFound.add(new Category(idCategory, strCategory));
-          System.out.println("ID: " + idCategory + ", Name: " + strCategory);
+          //System.out.println("ID: " + idCategory + ", Name: " + strCategory);
         }
-        System.out.println("--------------------");
+        //System.out.println("--------------------");
 
       }
     } catch (Exception e) {
       e.printStackTrace();
     }
-    System.out.println(categoriesFound);
+    //System.out.println(categoriesFound);
     return categoriesFound;
   }
 
@@ -96,7 +96,7 @@ public class MealAPI {
         in.close();
 
         // print response
-        System.out.println(response.toString());
+        //System.out.println(response.toString());
         // analyse JSON response
         jsonResult = new JSONObject(response.toString());
 
@@ -108,14 +108,14 @@ public class MealAPI {
           String strMeal = meal.getString("strMeal");
 
           mealsFound.add(new Meal(idMeal, strMeal, category));
-          System.out.println("Meal ID: " + idMeal + ", Meal Name: " + strMeal);
+          //System.out.println("Meal ID: " + idMeal + ", Meal Name: " + strMeal);
         }
-        System.out.println("--------------------");
+        //System.out.println("--------------------");
         }
       } catch (Exception e) {
       e.printStackTrace();
     }
-    System.out.println(mealsFound);
+    //System.out.println(mealsFound);
     return mealsFound;
   }
 
@@ -141,7 +141,7 @@ public class MealAPI {
         in.close();
 
         // print response
-        System.out.println(response.toString());
+        //System.out.println(response.toString());
         // analyse JSON response
         jsonResult = new JSONObject(response.toString());
 
@@ -156,12 +156,12 @@ public class MealAPI {
 
           Meal mealObj = new Meal(idMeal, strMeal, strCategory, strInstructions);
 
-          System.out.println("Meal ID: " + idMeal);
-          System.out.println("Meal Name: " + strMeal);
-          System.out.println("Category: " + strCategory);
-          System.out.println("Cooking Steps: " + strInstructions);
+          //System.out.println("Meal ID: " + idMeal);
+          //System.out.println("Meal Name: " + strMeal);
+          //System.out.println("Category: " + strCategory);
+          //System.out.println("Cooking Steps: " + strInstructions);
 
-          System.out.println("Ingredients and Amounts:");
+          //System.out.println("Ingredients and Amounts:");
           for (int j = 1; j <= 20; j++) {
             String ingredientKey = "strIngredient" + j;
             String measureKey = "strMeasure" + j;
@@ -169,17 +169,17 @@ public class MealAPI {
               String ingredient = meal.getString(ingredientKey);
               String measure = meal.getString(measureKey);
               mealObj.addIngredient(new Ingredient(ingredient, measure));
-              System.out.println(ingredient + ": " + measure);
+              //System.out.println(ingredient + ": " + measure);
             }
           }
           mealsFound.add(mealObj);
-          System.out.println("--------------------");
+          //System.out.println("--------------------");
         }
       }
     } catch (Exception e) {
       e.printStackTrace();
     }
-    System.out.println(mealsFound);
+    //System.out.println(mealsFound);
     return mealsFound;
   }
 
