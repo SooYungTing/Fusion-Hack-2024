@@ -32,8 +32,13 @@ public class MealCalculator
     //app.mealAPI.calMealCategory(weather);
   }
 
+  /**
+   * call app.mealAPI.query before calling this function
+   * @return
+   */
   Meal getMeal()
   {
+    if (app.weatherAPI.condition == null) return null;
     ArrayList<Category> categories = app.mealAPI.listCategories();
 
     int categoryIndex = 17;
