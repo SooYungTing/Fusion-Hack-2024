@@ -11,6 +11,7 @@ public class WeatherAPI {
   StringBuffer response;
   JSONObject jsonResult;
   float temperature;
+  float feels_like;
   String condition;
   int humidity;
   App app;
@@ -57,10 +58,13 @@ public class WeatherAPI {
 
         // print relevant weather data
         temperature = jsonResult.getJSONObject("current").getFloat("temp_c");
+        feels_like = jsonResult.getJSONObject("current").getFloat("feelslike_c");
         condition = jsonResult.getJSONObject("current").getJSONObject("condition").getString("text");
+
         humidity = jsonResult.getJSONObject("current").getInt("humidity");
 
         System.out.println("Current temperature in " + location + " is: " + temperature + "°C");
+        System.out.println("Current temperature feels like " + feels_like + "°C");
         System.out.println("Current humidity is " + humidity);
         System.out.println("Weather condition: " + condition);
       }
@@ -70,7 +74,7 @@ public class WeatherAPI {
   }
 
   public static void main(String[] args) {
-    //new WeatherAPI().query("SO163FY");
+    new App().weatherAPI.query("SO163FY");
   }
 }
 

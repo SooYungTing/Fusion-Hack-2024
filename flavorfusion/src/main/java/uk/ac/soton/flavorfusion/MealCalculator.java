@@ -44,11 +44,16 @@ public class MealCalculator
     int index = calMealCategory();
     Category category = app.mealAPI.listCategories().get(index);
     ArrayList<Meal> meals = app.mealAPI.searchByCategory(category.name);
+    //meals.get()
+    int index2 = (int) (app.weatherAPI.feels_like * app.weatherAPI.humidity);
+    Meal result = meals.get(index2 % meals.size());
     System.out.println("meals:" + meals);
-    return null;
+    System.out.println("result:" + result);
+    return result;
   }
 
-  public int calMealIndex(){
+  public int calMealIndex()
+  {
     return 1;
   }
 }
