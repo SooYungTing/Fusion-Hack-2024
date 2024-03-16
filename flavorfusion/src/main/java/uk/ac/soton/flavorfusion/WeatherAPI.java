@@ -52,7 +52,7 @@ public class WeatherAPI {
         in.close();
 
         // print response
-        System.out.println(response.toString());
+        //System.out.println(response.toString());
         // analyse JSON response
         jsonResult = new JSONObject(response.toString());
 
@@ -63,10 +63,10 @@ public class WeatherAPI {
 
         humidity = jsonResult.getJSONObject("current").getInt("humidity");
 
-        System.out.println("Current temperature in " + location + " is: " + temperature + "°C");
-        System.out.println("Current temperature feels like " + feels_like + "°C");
-        System.out.println("Current humidity is " + humidity);
-        System.out.println("Weather condition: " + condition);
+        //System.out.println("Current temperature in " + location + " is: " + temperature + "°C");
+        //System.out.println("Current temperature feels like " + feels_like + "°C");
+        //System.out.println("Current humidity is " + humidity);
+        //System.out.println("Weather condition: " + condition);
       }
     } catch (Exception e) {
       e.printStackTrace();

@@ -11,8 +11,6 @@ public class MealCalculator
   }
   public static void main(String[] args){
     App app = new App();
-    app.weatherAPI.query("Shanghai");
-    app.mealCalculator.calMealCategory();
     //MealCalculator m = new MealCalculator();
     //WeatherAPI weather = new WeatherAPI();
 
@@ -21,39 +19,41 @@ public class MealCalculator
     //weather.query("Beijing");    //65193554
     app.weatherAPI.query("Shanghai");
     app.mealCalculator.getMeal();
+
+    app.weatherAPI.query("Beijing");
+    app.mealCalculator.getMeal();
+
+    app.weatherAPI.query("London");
+    app.mealCalculator.getMeal();
+
+    app.weatherAPI.query("SO163FY");
+    app.mealCalculator.getMeal();
     //weather.query("Paris");//1686825089
     //app.mealAPI.calMealCategory(weather);
   }
 
-  public int calMealCategory()
-  {
-    int result = 17;
-    result += app.weatherAPI.temperature;
-    result += result + app.weatherAPI.condition.hashCode();
-    result += app.weatherAPI.humidity;
-    result = result >> 5;
-    result = result % 14;
-
-    result = result == 0 ? 1 : result;
-    System.out.println(result);
-    return result;
-  }
-
+  /**
+   * call app.mealAPI.query before calling this function
+   * @return
+   */
   Meal getMeal()
   {
-    int index = calMealCategory();
-    Category category = app.mealAPI.listCategories().get(index);
-    ArrayList<Meal> meals = app.mealAPI.searchByCategory(category.name);
-    //meals.get()
-    int index2 = (int) (app.weatherAPI.feels_like * app.weatherAPI.humidity);
-    Meal result = meals.get(index2 % meals.size());
-    System.out.println("meals:" + meals);
+    if (app.weatherAPI.condition == null) return null;
+    ArrayList<Category> categories = app.mealAPI.listCategories();
+
+    int categoryIndex = 17;
+    categoryIndex += app.weatherAPI.temperature;
+    categoryIndex += categoryIndex + app.weatherAPI.condition.hashCode();
+    categoryIndex += app.weatherAPI.humidity;
+    categoryIndex = categoryIndex >> 5;
+    categoryIndex = categoryIndex % categories.size();
+
+    ArrayList<Meal> meals = app.mealAPI.searchByCategory(categories.get(categoryIndex).name);
+    int mealIndex = (int) (app.weatherAPI.feels_like * app.weatherAPI.humidity);
+    Meal meal = meals.get(mealIndex % meals.size());
+    Meal result = app.mealAPI.searchByID(meal.id).get(0);
+    //System.out.println("meals:" + meals);
     System.out.println("result:" + result);
     return result;
-  }
-
-  public int calMealIndex()
-  {
-    return 1;
   }
 }
