@@ -13,6 +13,12 @@ public class WeatherAPI {
   float temperature;
   String condition;
   int humidity;
+  App app;
+
+  public WeatherAPI(App app)
+  {
+    this.app = app;
+  }
 
   String getURLString(String location)
   {
@@ -64,7 +70,7 @@ public class WeatherAPI {
   }
 
   public static void main(String[] args) {
-    new WeatherAPI().query("SO163FY");
+    //new WeatherAPI().query("SO163FY");
   }
 }
 
