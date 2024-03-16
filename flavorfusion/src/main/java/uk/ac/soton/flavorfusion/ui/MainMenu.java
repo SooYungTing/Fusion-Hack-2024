@@ -7,71 +7,90 @@ import java.awt.event.ActionListener;
 
 public class MainMenu extends JFrame {
 
-  public MainMenu() {
-    // Set the title of the window
-    setTitle("Flavour Fushion");
+    public MainMenu() {
+        // Set the title of the window
+        setTitle("Flavour Fusion");
 
-    // Setting the default close operation
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // Setting the default close operation
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    // Set the layout
-    setLayout(new BorderLayout());
+        // Set the layout
+        setLayout(new BorderLayout());
 
-    // Add UI components
-    initComponents();
+        // Add UI components
+        initComponents();
 
-    // Set the size of the window
-    setSize(1000, 700);
+        // Set the size of the window
+        setSize(1000, 700);
 
-    // Center the window on the screen
-    setLocationRelativeTo(null);
+        // Center the window on the screen
+        setLocationRelativeTo(null);
 
-    // Make the window visible
-    setVisible(true);
-  }
+        // Make the window visible
+        setVisible(true);
+    }
 
-  private void initComponents() {
-    // Create a panel for the right half of the window
-    JPanel rightPanel = new JPanel();
-    // Set the layout for the right panel (optional)
-    rightPanel.setLayout(new GridLayout(3, 1, 0, 20)); // 3 rows, 1 column, gap of 10 pixels between components
-    // Add some space around the components in the right panel (optional)
-    rightPanel.setBorder(BorderFactory.createEmptyBorder(300, 200, 10, 200));
-    // Add the right panel to the CENTER region of the JFrame
-    add(rightPanel, BorderLayout.CENTER);
+    private void initComponents() {
 
-    // Create the "Start" button
-    JButton startButton = new JButton("Start");
-    // Add the "Start" button to the right panel
-    rightPanel.add(startButton);
+        ImageIcon originalIcon = new ImageIcon("flavorfusion/src/main/resources/images/FlavourFusion Logo.png"); // Adjust path if necessary
+        Image originalImage = originalIcon.getImage();
+        // Resize the image (Change the width and height as needed)
+        Image resizedImage = originalImage.getScaledInstance(800, 300, Image.SCALE_SMOOTH);
+        ImageIcon resizedIcon = new ImageIcon(resizedImage);
 
-    // Create the "Instruction" button
-    JButton instructionButton = new JButton("Instruction");
-    // Add the "Instruction" button to the right panel
-    rightPanel.add(instructionButton);
+        // Create a label with the resized image
+        JLabel imageLabel = new JLabel(resizedIcon);
 
-    // Create the "Exit" button
-    JButton exitButton = new JButton("Exit");
-    // Add action listener to the "Exit" button
-    exitButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        System.exit(0); // Terminate the program
-      }
-    });
-    // Add the "Exit" button to the right panel
-    rightPanel.add(exitButton);
+        // Add the image label to the NORTH region of the JFrame
+        add(imageLabel, BorderLayout.NORTH);
 
-  }
+        // Create a panel for the right half of the window
+        JPanel rightPanel = new JPanel();
+        // Set the layout for the right panel (optional)
+        rightPanel.setLayout(new GridLayout(3, 1, 0, 20)); // 3 rows, 1 column, gap of 10 pixels between components
+        // Add some space around the components in the right panel (optional)
+        rightPanel.setBorder(BorderFactory.createEmptyBorder(40, 200, 10, 200));
+        // Add the right panel to the CENTER region of the JFrame
+        add(rightPanel, BorderLayout.CENTER);
 
-  public static void main(String[] args) {
-    // Ensure the GUI is created on the Event Dispatch Thread for thread safety
-    SwingUtilities.invokeLater(new Runnable() {
-      public void run() {
-        new MainMenu().setVisible(true);
-      }
-    });
-  }
+        // Create the "Start" button
+        JButton startButton = new JButton("Start");
+        // Set the font for the "Start" button
+        startButton.setFont(new Font("Arial", Font.BOLD, 24));
+        // Add the "Start" button to the right panel
+        rightPanel.add(startButton);
+
+        // Create the "Instruction" button
+        JButton instructionButton = new JButton("Instruction");
+        // Set the font for the "Instruction" button
+        instructionButton.setFont(new Font("Arial", Font.BOLD, 24));
+        // Add the "Instruction" button to the right panel
+        rightPanel.add(instructionButton);
+
+        // Create the "Exit" button
+        JButton exitButton = new JButton("Exit");
+        // Set the font for the "Exit" button
+        exitButton.setFont(new Font("Arial", Font.BOLD, 24));
+        // Add action listener to the "Exit" button
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0); // Terminate the program
+            }
+        });
+        // Add the "Exit" button to the right panel
+        rightPanel.add(exitButton);
+
+    }
+
+    public static void main(String[] args) {
+        // Ensure the GUI is created on the Event Dispatch Thread for thread safety
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new MainMenu().setVisible(true);
+            }
+        });
+    }
 }
 
 
