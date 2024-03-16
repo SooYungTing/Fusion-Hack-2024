@@ -58,7 +58,7 @@ public class Instruction extends JFrame{
         backButton.addActionListener(e -> {
             // Add action to go back, e.g., close current window or show previous window
             dispose(); // For demonstration, simply close this window
-        });
+        });//TODO: go back to main menu
 
         // Create a panel for the back button with BorderLayout
         JPanel buttonPanel = new JPanel(new BorderLayout());
