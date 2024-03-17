@@ -242,14 +242,18 @@ public class WeatherMenu extends JFrame{
     leftPanel.setOpaque(false);
     rightPanel.setOpaque(false);
 
+    // Center the window on the screen
+    setLocationRelativeTo(null);
+
+    // Make the window visible
     setVisible(true);
 
     buttonContinue.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        // 关闭当前 WeatherMenu 窗口
+        // Close current WeatherMenu window.
         dispose();
-        // 显示 RecipeMenu 窗口
+        // Display RecipeMenu window.
         new RecipeMenu(WeatherMenu.this).setVisible(true);
       }
     });
