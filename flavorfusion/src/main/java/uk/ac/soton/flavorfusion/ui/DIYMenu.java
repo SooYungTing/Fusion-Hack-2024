@@ -52,12 +52,12 @@ public class DIYMenu extends JFrame {
     // Add input fields to the input panel with titles
     addInputField(inputPanel, "Weather Condition:");
     addInputField(inputPanel, "Temperature (°C):");
-    addInputField(inputPanel, "Wind Direction:");
-    addInputField(inputPanel, "Wind Speed:");
-    addInputField(inputPanel, "Pressure:");
-    addInputField(inputPanel, "Precipitation:");
-    addInputField(inputPanel, "Humidity:");
-    addInputField(inputPanel, "Visibility:");
+    addInputField(inputPanel, "Cloud (%):");
+    addInputField(inputPanel, "Wind Speed (km/h):");
+    addInputField(inputPanel, "Pressure (inHg):");
+    addInputField(inputPanel, "Precipitation (mm):");
+    addInputField(inputPanel, "Humidity (%):");
+    addInputField(inputPanel, "Visibility (km):");
     addInputField(inputPanel, "UV Index:");
 
     // Panel for the back button
