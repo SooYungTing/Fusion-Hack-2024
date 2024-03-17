@@ -243,6 +243,14 @@ public class WeatherMenu extends JFrame{
     getContentPane().add(leftPanel, BorderLayout.WEST);
     getContentPane().add(rightPanel, BorderLayout.CENTER);
 
+    // Create a panel for the back button with FlowLayout for right alignment
+    JPanel backButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+    backButtonPanel.setOpaque(false); // Make panel transparent
+
+
+    // Add the button panel to the SOUTH region of the JFrame
+    add(backButtonPanel, BorderLayout.SOUTH);
+
     // ------
     leftPanel.setOpaque(false);
     rightPanel.setOpaque(false);
