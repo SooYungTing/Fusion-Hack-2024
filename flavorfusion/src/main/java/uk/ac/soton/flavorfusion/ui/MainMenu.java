@@ -70,8 +70,20 @@ public class MainMenu extends JFrame {
 
 
         // Set the font for the "Start" button
-        //startButton.setFont(new Font("Arial", Font.BOLD, 24));
         startButton.setFont(new Font("Arial", Font.BOLD, 32));
+
+        // Add ActionListener to the "Start" button
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Create and display OptionMenu
+                OptionMenu optionMenu = new OptionMenu(MainMenu.this);
+                optionMenu.setVisible(true);
+
+                // Hide the MainMenu
+                setVisible(false);
+            }
+        });
 
         // Add the "Start" button to the right panel
         rightPanel.add(startButton);
@@ -146,16 +158,6 @@ public class MainMenu extends JFrame {
 
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 button.setForeground(originalColor);
-            }
-        });
-    }
-
-
-    public static void main(String[] args) {
-        // Ensure the GUI is created on the Event Dispatch Thread for thread safety
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new MainMenu().setVisible(true);
             }
         });
     }

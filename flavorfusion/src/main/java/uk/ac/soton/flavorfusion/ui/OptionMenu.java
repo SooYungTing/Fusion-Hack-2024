@@ -3,6 +3,7 @@ package uk.ac.soton.flavorfusion.ui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 public class OptionMenu extends JFrame {
@@ -82,6 +83,18 @@ public class OptionMenu extends JFrame {
 
         // Add the back button to the buttonPanel
         JButton backButton = new JButton("Back");
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Hide the OptionMenu
+                setVisible(false); // 修改了这里，隐藏了当前的 OptionMenu 窗口
+
+                // Show the previous window (MainMenu)
+                if (previousWindow != null) {
+                    previousWindow.setVisible(true); // 修改了这里，显示之前的 MainMenu 窗口
+                }
+            }
+        });
         backButtonPanel.add(backButton);
 
         // Add the button panel to the SOUTH region of the JFrame
@@ -136,8 +149,4 @@ public class OptionMenu extends JFrame {
         button.setFont(new Font("Arial", Font.BOLD, 40));
         button.setForeground(Color.BLACK);
     }
-
-    public static void main(String[] args){
-        JFrame mainMenuWindow = new MainMenu();
-        new OptionMenu(mainMenuWindow);}
 }
