@@ -4,23 +4,23 @@ import java.beans.Visibility;
 
 public class WeatherData
 {
-  float temperature;
-  int humidity;
-  float pressure;
+  public float temperature;
+  public int humidity;
+  public float pressure;
   //紫外线等级 国际上从0开始 到11+后无上限了
-  float uvIndex;
-  String weatherCondition;
+  public float uvIndex;
+  public String weatherCondition;
 
   //风速: 单位km/h
-  float windSpeed;
+  public float windSpeed;
   //降水: 单位mm
-  float precipitation;
+  public float precipitation;
   //能见度: 单位km
-  float visibility;
+  public float visibility;
   //白天或者黑夜:白天为1 黑夜为0 (api是这么给的)
-  int daynight;
+  public int daynight;
   //白云占天空占百分比 int %
-  int cloud;
+  public int cloud;
 
   public WeatherData(float temperature, int humidity, float pressure, float uvIndex,
       String weatherCondition, float windSpeed, float precipitation, float visibility, int daynight,

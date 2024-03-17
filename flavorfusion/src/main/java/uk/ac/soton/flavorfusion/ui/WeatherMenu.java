@@ -7,6 +7,8 @@ import java.util.Objects;
 import javax.swing.*;
 import uk.ac.soton.flavorfusion.App;
 import uk.ac.soton.flavorfusion.MealAPI;
+import uk.ac.soton.flavorfusion.WeatherAPI;
+import uk.ac.soton.flavorfusion.WeatherData;
 
 public class WeatherMenu extends JFrame{
   public WeatherMenu(OptionMenu optionMenu) {
@@ -94,7 +96,7 @@ public class WeatherMenu extends JFrame{
 
     labelTitle1.setPreferredSize(new Dimension(135, labelTitle1.getPreferredSize().height));
     JLabel textField1 = new JLabel(); // 用于显示数据
-    textField1.setText("testttt");
+    //textField1.setText();
     entryPanel1.add(labelTitle1, BorderLayout.WEST);
     entryPanel1.add(textField1, BorderLayout.CENTER);
     rightPanel.add(entryPanel1);
@@ -255,6 +257,25 @@ public class WeatherMenu extends JFrame{
         dispose();
         // Display RecipeMenu window.
         new RecipeMenu(WeatherMenu.this).setVisible(true);
+      }
+    });
+
+    buttonCommit.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        String location = textFieldCity.getText();
+        WeatherData wd = WeatherAPI.query(location);
+        textField1.setText(Float.toString(wd.temperature));
+        textField2.setText(Float.toString(wd.pressure));
+        textField3.setText(Integer.toString(wd.humidity));
+        textField4.setText(Float.toString(wd.uvIndex));
+        textField5.setText(wd.weatherCondition);
+        textField6.setText(Float.toString(wd.windSpeed));
+        textField7.setText(Float.toString(wd.precipitation));
+        textField8.setText(Float.toString(wd.visibility));
+        textField9.setText(Integer.toString(wd.daynight));
+        textField10.setText(Integer.toString(wd.cloud));
+
       }
     });
   }
