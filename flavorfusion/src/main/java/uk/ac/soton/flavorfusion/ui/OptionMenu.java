@@ -11,10 +11,6 @@ public class OptionMenu extends JFrame {
     private JFrame previousWindow;
 
     public OptionMenu(JFrame previousWindow) {
-        //JFrame mainMenuWindow = new MainMenu();
-        //new OptionMenu(mainMenuWindow);
-
-        //this.previousWindow = mainMenuWindow;
         this.previousWindow = previousWindow;
         // Set the title of the window
         setTitle("FlavorFusion Options");
