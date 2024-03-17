@@ -174,15 +174,6 @@ public class MainMenu extends JFrame {
             }
         });
     }
-    public static void main(String[] args) {
-        // Ensure the GUI is created on the Event Dispatch Thread for thread safety
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new MainMenu().setVisible(true);
-            }
-        });
-    }
-
 }
 
 class BackgroundPanel extends JPanel {
