@@ -13,7 +13,7 @@ public class OptionMenu extends JFrame {
     public OptionMenu(JFrame previousWindow) {
         this.previousWindow = previousWindow;
         // Set the title of the window
-        setTitle("FlavorFusion Options");
+        setTitle("Brew the Weather: Taste the World");
 
         // Specify an action for the close button
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
