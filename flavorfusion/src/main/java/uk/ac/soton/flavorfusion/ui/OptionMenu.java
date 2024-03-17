@@ -65,13 +65,13 @@ public class OptionMenu extends JFrame {
         add(rightPanel, BorderLayout.CENTER);
 
         // Create the "Weather" button
-        JButton weatherButton = new JButton("Weather");
+        JButton weatherButton = new JButton("Current Weather");
         makeButtonTransparent(weatherButton);
         addButtonHoverEffect(weatherButton, Color.GRAY, weatherButton.getForeground());
         rightPanel.add(weatherButton);
 
         // Create the "DIY" button
-        JButton diyButton = new JButton("DIY");
+        JButton diyButton = new JButton("DIY Weather");
         makeButtonTransparent(diyButton);
         addButtonHoverEffect(diyButton, Color.GRAY, diyButton.getForeground());
         rightPanel.add(diyButton);
