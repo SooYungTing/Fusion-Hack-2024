@@ -278,6 +278,31 @@ public class WeatherMenu extends JFrame{
 
       }
     });
+    // After adding leftPanel and rightPanel to the contentPane
+// Step 1: Create the Back Button
+    JButton backButton = new JButton("Back");
+    backButton.setFocusPainted(false); // Optional: to enhance button appearance
+
+// Step 2: Position the Button at the bottom right
+// Creating a panel with a FlowLayout for right alignment
+    JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+    bottomPanel.add(backButton); // Add the backButton to the bottom panel
+    bottomPanel.setOpaque(false); // Optional: to maintain the transparency of the background image
+
+// Adding the bottomPanel to the SOUTH region of the contentPane
+    getContentPane().add(bottomPanel, BorderLayout.SOUTH);
+
+// Step 3: Add Action to the Button
+// Assuming there's a method to go back to the main menu or previous screen
+    backButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        // Perform action to go back, e.g., hide this window and show the previous one
+        WeatherMenu.this.dispose(); // Close current window
+        optionMenu.setVisible(true); // Assuming 'optionMenu' is the previous menu, make it visible again
+      }
+    });
+
   }
 
 }
