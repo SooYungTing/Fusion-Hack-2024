@@ -7,12 +7,12 @@ import javax.swing.ImageIcon;
 
 public class Meal {
 
-  String id;
-  String name;
-  String category;
+  public String id;
+  public String name;
+  public String category;
   public String instructions;
-  ArrayList<Ingredient> ingredients;
-  URL imageAddress;
+  public ArrayList<Ingredient> ingredients;
+  public URL imageAddress;
 
   /**
    * data returned when searching by meal name or id
