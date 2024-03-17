@@ -38,18 +38,17 @@ public class MealCalculator
     ArrayList<Category> categories = MealAPI.listCategories();
 
     int categoryIndex = 17;
-    categoryIndex += data.temperature;
-    categoryIndex += categoryIndex + data.weatherCondition.hashCode();
-    categoryIndex += data.humidity;
-    categoryIndex = categoryIndex >> 5;
-    categoryIndex = categoryIndex % categories.size();
-    categoryIndex *= data.uvIndex;
+    categoryIndex *= (data.temperature + 1);
+    categoryIndex *= (data.weatherCondition.hashCode() % 10 + 1);
+    categoryIndex *= (data.humidity + 1);
+    categoryIndex *= (data.uvIndex + 1);
     if (data.daynight > 1) categoryIndex *= -1;
-    categoryIndex *= (Math.pow(data.windSpeed, 2) + 1);
-    categoryIndex /= (data.precipitation + 1);
+    categoryIndex *= (data.windSpeed + 1);
+    categoryIndex *= (data.precipitation + 1);
+    categoryIndex = categoryIndex >> 5;
 
     ArrayList<Meal> meals = MealAPI.searchByCategory(categories.get(categoryIndex % categories.size()).name);
-    int mealIndex = (int) (data.visibility * (data.cloud + 1));
+    int mealIndex = (int) ((data.visibility + 1) * (data.cloud + 1));
     Meal meal = meals.get(mealIndex % meals.size());
     Meal result = MealAPI.searchByID(meal.id).get(0);
     //System.out.println("meals:" + meals);
