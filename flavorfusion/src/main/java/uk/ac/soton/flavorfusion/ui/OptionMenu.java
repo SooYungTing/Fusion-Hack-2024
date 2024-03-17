@@ -2,10 +2,19 @@ package uk.ac.soton.flavorfusion.ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 public class OptionMenu extends JFrame {
 
-    public OptionMenu() {
+    private JFrame previousWindow;
+
+    public OptionMenu(JFrame previousWindow) {
+        //JFrame mainMenuWindow = new MainMenu();
+        //new OptionMenu(mainMenuWindow);
+
+        //this.previousWindow = mainMenuWindow;
+        this.previousWindow = previousWindow;
         // Set the title of the window
         setTitle("FlavorFusion Options");
 
@@ -18,7 +27,7 @@ public class OptionMenu extends JFrame {
         // Create an instance of the BackgroundPanel with the path to your background image
         BackgroundPanel backgroundPanel = new BackgroundPanel("/images/Background 2.PNG");
         backgroundPanel.setLayout(new BorderLayout());
-        setContentPane(backgroundPanel); 
+        setContentPane(backgroundPanel);
 
 
         // Add UI components
@@ -32,51 +41,49 @@ public class OptionMenu extends JFrame {
 
         // Make the window visible
         setVisible(true);
+
+        setupEscapeKey();
+
     }
 
 
     private void initComponents() {
         // Create a panel with FlowLayout for centering the title
         JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-
-        // Create the title label and add it to the panel
-        JLabel titleLabel = new JLabel("FlavorFusion Options");
-        titlePanel.add(titleLabel);
+        titlePanel.setOpaque(false); // Make panel transparent
 
         // Add the title panel to the NORTH region of the JFrame
         add(titlePanel, BorderLayout.NORTH);
 
-        // Create a panel for the left half of the window
-        JPanel leftPanel = new JPanel();
-        // Set the background color (optional)
-        leftPanel.setBackground(Color.WHITE);
-        // Add the left panel to the WEST (left) region of the JFrame
-        add(leftPanel, BorderLayout.EAST);
-
         // Create a panel for the right half of the window
         JPanel rightPanel = new JPanel();
-        // Set the layout for the right panel (optional)
-        rightPanel.setLayout(new GridLayout(2, 2, 0, 80)); // 3 rows, 1 column, gap of 10 pixels between components
-        // Add some space around the components in the right panel (optional)
-        rightPanel.setBorder(BorderFactory.createEmptyBorder(10, 500, 10, 50));
+        rightPanel.setOpaque(false); // Make panel transparent
+        rightPanel.setLayout(new GridLayout(2, 2, 0, 0)); // 2 rows, 2 columns, no gap
+        rightPanel.setBorder(BorderFactory.createEmptyBorder(125, 50, 175, 50));
+
         // Add the right panel to the CENTER region of the JFrame
         add(rightPanel, BorderLayout.CENTER);
 
         // Create the "Weather" button
         JButton weatherButton = new JButton("Weather");
-        // Add the "Weather" button to the right panel
+        makeButtonTransparent(weatherButton);
+        addButtonHoverEffect(weatherButton, Color.GRAY, weatherButton.getForeground());
         rightPanel.add(weatherButton);
 
         // Create the "DIY" button
         JButton diyButton = new JButton("DIY");
-        // Add the "DIY" button to the right panel
+        makeButtonTransparent(diyButton);
+        addButtonHoverEffect(diyButton, Color.GRAY, diyButton.getForeground());
         rightPanel.add(diyButton);
 
-        // Create a panel for the back button
+        // Create a panel for the back button with FlowLayout for right alignment
         JPanel backButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        // Add the back button to the EAST (right) side of the buttonPanel
+        backButtonPanel.setOpaque(false); // Make panel transparent
+
+        // Add the back button to the buttonPanel
         JButton backButton = new JButton("Back");
         backButtonPanel.add(backButton);
+
         // Add the button panel to the SOUTH region of the JFrame
         add(backButtonPanel, BorderLayout.SOUTH);
 
@@ -85,7 +92,52 @@ public class OptionMenu extends JFrame {
         backButtonPanel.setOpaque(false);
     }
 
-    public static void main(String[] args){
-        new OptionMenu();
+    private void addButtonHoverEffect(JButton button, Color hoverColor, Color originalColor) {
+        button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button.setForeground(hoverColor);
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button.setForeground(originalColor);
+            }
+        });
     }
+
+    private void setupEscapeKey() {
+        // Get the InputMap and ActionMap of the root pane to set up key bindings
+        InputMap inputMap = getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap actionMap = getRootPane().getActionMap();
+
+        // Define the key stroke for the ESC key
+        KeyStroke escapeKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
+
+        // Put the key stroke in the input map with a key "ESCAPE"
+        inputMap.put(escapeKeyStroke, "ESCAPE");
+
+        // Now put an action in the action map that quits the application when the "ESCAPE" key is invoked
+        actionMap.put("ESCAPE", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Instead of exiting, we hide the current window and show the previous one
+                setVisible(false); // Hide the current window
+                if (previousWindow != null) {
+                    previousWindow.setVisible(true); // Show the previous window
+                }
+            }
+        });
+    }
+
+    private void makeButtonTransparent(JButton button) {
+        button.setOpaque(false);
+        button.setContentAreaFilled(false);
+        button.setBorderPainted(false);
+        button.setFocusPainted(false);
+        button.setFont(new Font("Arial", Font.BOLD, 40));
+        button.setForeground(Color.BLACK);
+    }
+
+    public static void main(String[] args){
+        JFrame mainMenuWindow = new MainMenu();
+        new OptionMenu(mainMenuWindow);}
 }
