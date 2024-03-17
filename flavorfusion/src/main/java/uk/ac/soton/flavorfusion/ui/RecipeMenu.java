@@ -67,7 +67,7 @@ public class RecipeMenu extends JFrame {
         "<html><body style='font-family:Arial;font-size:16px;color:black;'>"
             + "<img src='"
             + imagePath
-            + "' style='width:150px;height:auto;'><br><br>" + "<h2>"+ meal.name+ "</h2><h3>Cooking Instructions</h3><p>"
+            + "' style='width:150px;height:auto;'><br><br>" + "<h1>"+ meal.name+ "</h1><h2>Category: "+ meal.category + "</h2><h2>Ingredients</h2>" + meal.generateHtmlTable() + "<h2>Cooking Instructions</h2><p>"
                 +inst + "</p>"
             + "</body></html>";
 

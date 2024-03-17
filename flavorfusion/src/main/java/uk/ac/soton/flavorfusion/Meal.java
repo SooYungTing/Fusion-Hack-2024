@@ -63,4 +63,28 @@ public class Meal {
     return "meal[id=" + id + ",name=" + name + ",category=" + category + ",instructions="
         + instructions + ",ingredients=" + ingredients;
   }
+
+  public String getIngredientsHTML()
+  {
+    StringBuilder sb = new StringBuilder("<ol>");
+    for (Ingredient in : ingredients)
+    {
+      sb.append("<li>");
+      sb.append(in.name + " <i>" + in.measure + "</i>");
+      sb.append("</li>");
+    }
+    sb.append("</ol>");
+    return sb.toString();
+  }
+
+  public String generateHtmlTable()
+  {
+    StringBuilder tableHtml = new StringBuilder();
+    tableHtml.append("<table border='1'><tr><th>Name</th><th>Measure</th></tr>");
+    for (Ingredient ingredient : ingredients) {
+      tableHtml.append(String.format("<tr><td>%s</td><td>%s</td></tr>", ingredient.name, ingredient.measure));
+    }
+    tableHtml.append("</table>");
+    return tableHtml.toString();
+  }
 }
