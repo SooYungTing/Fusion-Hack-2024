@@ -71,6 +71,17 @@ public class OptionMenu extends JFrame {
         JButton diyButton = new JButton("DIY Weather");
         makeButtonTransparent(diyButton);
         addButtonHoverEffect(diyButton, Color.GRAY, diyButton.getForeground());
+        diyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Hide the current OptionMenu
+                setVisible(false);
+
+                // Show the DIYMenu
+                DIYMenu diyMenu = new DIYMenu(OptionMenu.this);
+                diyMenu.setVisible(true);
+            }
+        });
         rightPanel.add(diyButton);
 
         // Create a panel for the back button with FlowLayout for right alignment

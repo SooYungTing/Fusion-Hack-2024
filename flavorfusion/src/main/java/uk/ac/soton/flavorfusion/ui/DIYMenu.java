@@ -3,6 +3,8 @@ package uk.ac.soton.flavorfusion.ui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class DIYMenu extends JFrame {
 
@@ -13,11 +15,34 @@ public class DIYMenu extends JFrame {
 
         setTitle("DIY Menu");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        initComponents(); // Initialize components
+
+        setSize(1000, 700);
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+
+    private void initComponents() {
+        // Load the background image
+        ImageIcon originalIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/Background 1.PNG")));
+        Image originalImage = originalIcon.getImage();
+        // Resize the image if necessary
+        Image resizedImage = originalImage.getScaledInstance(1000, 700, Image.SCALE_SMOOTH); // Adjust the width and height as needed
+        ImageIcon backgroundImage = new ImageIcon(resizedImage);
+
+        // Create a label with the resized background image
+        JLabel backgroundLabel = new JLabel(backgroundImage);
+
+        // Set layout of the frame
         setLayout(new BorderLayout());
+
+        // Add the background label to the content pane
+        getContentPane().add(backgroundLabel, BorderLayout.CENTER);
 
         // Panel for input fields
         JPanel inputPanel = new JPanel(new GridLayout(5, 2, 30, 30)); // 5 rows, 2 columns, gap: 30px
-        inputPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        inputPanel.setOpaque(false); // Make panel transparent
+        inputPanel.setBorder(BorderFactory.createEmptyBorder(50, 80, 20, 80));
 
         // Add Day/Night selection box to the input panel with a title
         addSelectionBox(inputPanel, "Day/Night:");
@@ -35,6 +60,7 @@ public class DIYMenu extends JFrame {
 
         // Panel for the back button
         JPanel backButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        backButtonPanel.setOpaque(false); // Make panel transparent
         backButtonPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         // Back button
@@ -47,19 +73,43 @@ public class DIYMenu extends JFrame {
         });
         backButtonPanel.add(backButton);
 
-        // Add panels to the main frame
-        add(inputPanel, BorderLayout.CENTER);
-        add(backButtonPanel, BorderLayout.SOUTH);
+        JPanel commitButtonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER)); // Center alignment
+        commitButtonPanel.setOpaque(false); // Make panel transparent
+        commitButtonPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 10));
 
-        setSize(1000, 700);
-        setLocationRelativeTo(null);
-        setVisible(true);
+        // Commit button
+        JButton commitButton = new JButton("Commit");
+        commitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Hide the current DIYMenu window
+                setVisible(false);
+
+                // Create a new RecipeMenu window
+                RecipeMenu recipeMenu = new RecipeMenu();
+                recipeMenu.setVisible(true);
+            }
+        });
+        commitButtonPanel.add(commitButton);
+
+        // Add panels to the background panel
+        JPanel buttonPanel = new JPanel(new BorderLayout());
+        buttonPanel.setOpaque(false); // Make panel transparent
+        buttonPanel.add(backButtonPanel, BorderLayout.EAST);
+        buttonPanel.add(commitButtonPanel, BorderLayout.WEST);
+
+        // Add panels to the background panel
+        backgroundLabel.setLayout(new BorderLayout());
+        backgroundLabel.add(inputPanel, BorderLayout.CENTER);
+        backgroundLabel.add(buttonPanel, BorderLayout.SOUTH);
     }
 
     // Method to add an input field to the panel with a title
     private void addInputField(JPanel panel, String label) {
         JPanel fieldPanel = new JPanel(new BorderLayout());
+        fieldPanel.setOpaque(false); // Make panel transparent
         JLabel fieldLabel = new JLabel(label);
+        fieldLabel.setFont(new Font("Arial", Font.BOLD, 16));
         JTextField textField = new JTextField();
         fieldPanel.add(fieldLabel, BorderLayout.NORTH);
         fieldPanel.add(textField, BorderLayout.CENTER);
@@ -69,7 +119,9 @@ public class DIYMenu extends JFrame {
     // Method to add a selection box to the panel with a title
     private void addSelectionBox(JPanel panel, String label) {
         JPanel boxPanel = new JPanel(new BorderLayout());
+        boxPanel.setOpaque(false); // Make panel transparent
         JLabel boxLabel = new JLabel(label);
+        boxLabel.setFont(new Font("Arial", Font.BOLD, 16));
         JComboBox<String> comboBox = new JComboBox<>();
         comboBox.addItem("Day");
         comboBox.addItem("Night");
