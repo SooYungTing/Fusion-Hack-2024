@@ -3,6 +3,7 @@ package uk.ac.soton.flavorfusion;
 import uk.ac.soton.flavorfusion.ui.MainMenu;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Objects;
 
 public class App {
@@ -20,7 +21,7 @@ public class App {
         });
     }
 
-    public static void setIconImage(JFrame frame) {
+    /*public static void setIconImage(JFrame frame) {
         // Set custom icon for the frame
         try {
             ImageIcon icon = new ImageIcon(Objects.requireNonNull(App.class.getResource("/images/icon.PNG")));
@@ -28,5 +29,28 @@ public class App {
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
+    }*/
+    public static void setIconImage(JFrame frame) {
+        // Set custom icon for the frame
+        try {
+            ImageIcon icon = new ImageIcon(Objects.requireNonNull(App.class.getResource("/images/icon.PNG")));
+            Image image = icon.getImage();
+
+            // Check if the OS is macOS
+            if (System.getProperty("os.name").startsWith("Mac")) {
+                // Java 9 and later approach using Taskbar
+                if (java.awt.Taskbar.isTaskbarSupported()) {
+                    java.awt.Taskbar.getTaskbar().setIconImage(image);
+                }
+                // For older versions of Java, you might need to use reflection for com.apple.eawt.Application
+                // to set the dock icon, but this is generally not needed for modern Java versions.
+            } else {
+                // For other operating systems, set the JFrame icon
+                frame.setIconImage(image);
+            }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
     }
+
 }
