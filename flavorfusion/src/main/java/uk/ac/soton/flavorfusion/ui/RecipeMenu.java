@@ -13,7 +13,9 @@ public class RecipeMenu extends JFrame {
 
   private JFrame previousWindow;
 
-  public RecipeMenu() {
+  public RecipeMenu(JFrame previousWindow) {
+    this.previousWindow = previousWindow;
+
     // Set the title of the window
     setTitle("Recipe Menu");
 
@@ -39,7 +41,7 @@ public class RecipeMenu extends JFrame {
     setVisible(true);
   }
 
-  public static void main(String[] args) {
+  /*public static void main(String[] args) {
     // Ensure the GUI is created on the Event Dispatch Thread for thread safety
     SwingUtilities.invokeLater(
         new Runnable() {
@@ -47,7 +49,7 @@ public class RecipeMenu extends JFrame {
             new RecipeMenu().setVisible(true);
           }
         });
-  }
+  }*/
 
   /*private void initComponents() {
     // Assuming this part stays as is, for setting up the background image
@@ -241,12 +243,14 @@ public class RecipeMenu extends JFrame {
     buttonPanel.setOpaque(false); // Make panel transparent
     // Back button
     JButton backButton = new JButton("Back");
+
     backButton.addActionListener((ActionEvent e) -> {
-      setVisible(false);
+      this.setVisible(false); // Hide RecipeMenu
       if (previousWindow != null) {
-        previousWindow.setVisible(true);
+        previousWindow.setVisible(true); // Show DIYMenu
       }
     });
+
     buttonPanel.add(backButton, BorderLayout.WEST); // Add back button to the left
 
 // Exit button
