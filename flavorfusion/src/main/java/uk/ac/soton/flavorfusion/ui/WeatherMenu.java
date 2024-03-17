@@ -90,7 +90,7 @@ public class WeatherMenu extends JFrame{
     labelTitle1.setOpaque(false);
 
     labelTitle1.setPreferredSize(new Dimension(135, labelTitle1.getPreferredSize().height));
-    JTextField textField1 = new JTextField(); // 用于显示数据
+    JLabel textField1 = new JLabel(); // 用于显示数据
     textField1.setText("testttt");
     entryPanel1.add(labelTitle1, BorderLayout.WEST);
     entryPanel1.add(textField1, BorderLayout.CENTER);
@@ -105,7 +105,7 @@ public class WeatherMenu extends JFrame{
     labelTitle2.setOpaque(false);
 
     labelTitle2.setPreferredSize(new Dimension(135, labelTitle2.getPreferredSize().height));
-    JTextField textField2 = new JTextField(); // 用于显示数据
+    JLabel textField2 = new JLabel(); // 用于显示数据
     textField2.setText("");
     entryPanel2.add(labelTitle2, BorderLayout.WEST);
     entryPanel2.add(textField2, BorderLayout.CENTER);
@@ -120,7 +120,7 @@ public class WeatherMenu extends JFrame{
     labelTitle3.setOpaque(false);
 
     labelTitle3.setPreferredSize(new Dimension(135, labelTitle3.getPreferredSize().height));
-    JTextField textField3 = new JTextField(); // 用于显示数据
+    JLabel textField3 = new JLabel(); // 用于显示数据
     textField3.setText("");
     entryPanel3.add(labelTitle3, BorderLayout.WEST);
     entryPanel3.add(textField3, BorderLayout.CENTER);
@@ -135,7 +135,7 @@ public class WeatherMenu extends JFrame{
     labelTitle4.setOpaque(false);
 
     labelTitle4.setPreferredSize(new Dimension(135, labelTitle4.getPreferredSize().height));
-    JTextField textField4 = new JTextField(); // 用于显示数据
+    JLabel textField4 = new JLabel(); // 用于显示数据
     textField4.setText("");
     entryPanel4.add(labelTitle4, BorderLayout.WEST);
     entryPanel4.add(textField4, BorderLayout.CENTER);
@@ -150,7 +150,7 @@ public class WeatherMenu extends JFrame{
     labelTitle5.setOpaque(false);
 
     labelTitle5.setPreferredSize(new Dimension(135, labelTitle5.getPreferredSize().height));
-    JTextField textField5 = new JTextField(); // 用于显示数据
+    JLabel textField5 = new JLabel(); // 用于显示数据
     textField5.setText("");
     entryPanel5.add(labelTitle5, BorderLayout.WEST);
     entryPanel5.add(textField5, BorderLayout.CENTER);
@@ -165,7 +165,7 @@ public class WeatherMenu extends JFrame{
     labelTitle6.setOpaque(false);
 
     labelTitle6.setPreferredSize(new Dimension(135, labelTitle6.getPreferredSize().height));
-    JTextField textField6 = new JTextField(); // 用于显示数据
+    JLabel textField6 = new JLabel(); // 用于显示数据
     textField6.setText("");
     entryPanel6.add(labelTitle6, BorderLayout.WEST);
     entryPanel6.add(textField6, BorderLayout.CENTER);
@@ -180,7 +180,7 @@ public class WeatherMenu extends JFrame{
     labelTitle7.setOpaque(false);
 
     labelTitle7.setPreferredSize(new Dimension(135, labelTitle7.getPreferredSize().height));
-    JTextField textField7 = new JTextField(); // 用于显示数据
+    JLabel textField7 = new JLabel(); // 用于显示数据
     textField7.setText("");
     entryPanel7.add(labelTitle7, BorderLayout.WEST);
     entryPanel7.add(textField7, BorderLayout.CENTER);
@@ -195,7 +195,7 @@ public class WeatherMenu extends JFrame{
     labelTitle8.setOpaque(false);
 
     labelTitle8.setPreferredSize(new Dimension(135, labelTitle8.getPreferredSize().height));
-    JTextField textField8 = new JTextField(); // 用于显示数据
+    JLabel textField8 = new JLabel(); // 用于显示数据
     textField8.setText("");
     entryPanel8.add(labelTitle8, BorderLayout.WEST);
     entryPanel8.add(textField8, BorderLayout.CENTER);
@@ -210,7 +210,7 @@ public class WeatherMenu extends JFrame{
     labelTitle9.setOpaque(false);
 
     labelTitle9.setPreferredSize(new Dimension(135, labelTitle9.getPreferredSize().height));
-    JTextField textField9 = new JTextField(); // 用于显示数据
+    JLabel textField9 = new JLabel(); // 用于显示数据
     textField9.setText("");
     entryPanel9.add(labelTitle9, BorderLayout.WEST);
     entryPanel9.add(textField9, BorderLayout.CENTER);
@@ -225,7 +225,7 @@ public class WeatherMenu extends JFrame{
     labelTitle10.setOpaque(false);
 
     labelTitle10.setPreferredSize(new Dimension(135, labelTitle10.getPreferredSize().height));
-    JTextField textField10 = new JTextField(); // 用于显示数据
+    JLabel textField10 = new JLabel(); // 用于显示数据
     textField10.setText("");
     entryPanel10.add(labelTitle10, BorderLayout.WEST);
     entryPanel10.add(textField10, BorderLayout.CENTER);
