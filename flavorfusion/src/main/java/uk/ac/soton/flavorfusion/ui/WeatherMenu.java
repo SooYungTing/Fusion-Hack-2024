@@ -6,11 +6,14 @@ import java.awt.event.ActionListener;
 import java.util.Objects;
 import javax.swing.*;
 import uk.ac.soton.flavorfusion.App;
+import uk.ac.soton.flavorfusion.Meal;
 import uk.ac.soton.flavorfusion.MealAPI;
+import uk.ac.soton.flavorfusion.MealCalculator;
 import uk.ac.soton.flavorfusion.WeatherAPI;
 import uk.ac.soton.flavorfusion.WeatherData;
 
 public class WeatherMenu extends JFrame{
+  WeatherData wd;
   public WeatherMenu(OptionMenu optionMenu) {
     // 设置整个窗体的大小
     setSize(1000, 700);
@@ -250,21 +253,29 @@ public class WeatherMenu extends JFrame{
     // Make the window visible
     setVisible(true);
 
-    buttonContinue.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        // Close current WeatherMenu window.
-        dispose();
-        // Display RecipeMenu window.
-        new RecipeMenu(WeatherMenu.this).setVisible(true);
-      }
-    });
+    buttonContinue.addActionListener(
+        new ActionListener() {
+          @Override
+          public void actionPerformed(ActionEvent e) {
+
+            if (wd != null) {
+              Meal meal = MealCalculator.getMeal(wd);
+              if (meal != null) {
+                System.out.println("meal generated: " + meal);
+                // Close current WeatherMenu window.
+                dispose();
+                // Display RecipeMenu window.
+                new RecipeMenu(WeatherMenu.this).setVisible(true);
+              }
+            }
+          }
+        });
 
     buttonCommit.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         String location = textFieldCity.getText();
-        WeatherData wd = WeatherAPI.query(location);
+        wd = WeatherAPI.query(location);
         textField1.setText(Float.toString(wd.temperature));
         textField2.setText(Float.toString(wd.pressure));
         textField3.setText(Integer.toString(wd.humidity));
@@ -275,7 +286,6 @@ public class WeatherMenu extends JFrame{
         textField8.setText(Float.toString(wd.visibility));
         textField9.setText(Integer.toString(wd.daynight));
         textField10.setText(Integer.toString(wd.cloud));
-
       }
     });
   }
