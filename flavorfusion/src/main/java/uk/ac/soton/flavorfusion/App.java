@@ -8,6 +8,8 @@ import java.util.Objects;
 
 public class App {
     public static void main(String[] args) {
+        Thread musicThread = new Thread(new MP3Player("src/main/resources/music/Maryse Letarte - Ô Traîneau Dans Le Cie.mp3"));
+        musicThread.start();
         // Ensure the GUI is created on the Event Dispatch Thread for thread safety
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
