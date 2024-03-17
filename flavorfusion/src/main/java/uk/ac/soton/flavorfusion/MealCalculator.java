@@ -17,17 +17,13 @@ public class MealCalculator
     //weather.query("SO163FY");
     //weather.query("SO173AX");    //594186912
     //weather.query("Beijing");    //65193554
-    app.weatherAPI.query("Shanghai");
-    app.mealCalculator.getMeal();
+    app.mealCalculator.getMeal(app.weatherAPI.query("Shanghai"));
 
-    app.weatherAPI.query("Beijing");
-    app.mealCalculator.getMeal();
+    app.mealCalculator.getMeal(app.weatherAPI.query("Beijing"));
 
-    app.weatherAPI.query("London");
-    app.mealCalculator.getMeal();
+    app.mealCalculator.getMeal(app.weatherAPI.query("London"));
 
-    app.weatherAPI.query("SO163FY");
-    app.mealCalculator.getMeal();
+    app.mealCalculator.getMeal(app.weatherAPI.query("SO163FY"));
     //weather.query("Paris");//1686825089
     //app.mealAPI.calMealCategory(weather);
   }
@@ -36,20 +32,24 @@ public class MealCalculator
    * call app.mealAPI.query before calling this function
    * @return
    */
-  Meal getMeal()
+  Meal getMeal(WeatherData data)
   {
-    if (app.weatherAPI.condition == null) return null;
+    if (data == null) return null;
     ArrayList<Category> categories = app.mealAPI.listCategories();
 
     int categoryIndex = 17;
-    categoryIndex += app.weatherAPI.temperature;
-    categoryIndex += categoryIndex + app.weatherAPI.condition.hashCode();
-    categoryIndex += app.weatherAPI.humidity;
+    categoryIndex += data.temperature;
+    categoryIndex += categoryIndex + data.weatherCondition.hashCode();
+    categoryIndex += data.humidity;
     categoryIndex = categoryIndex >> 5;
     categoryIndex = categoryIndex % categories.size();
+    categoryIndex *= data.uvIndex;
+    if (data.daynight > 1) categoryIndex *= -1;
+    categoryIndex *= (Math.pow(data.windSpeed, 2) + 1);
+    categoryIndex /= (data.precipitation + 1);
 
-    ArrayList<Meal> meals = app.mealAPI.searchByCategory(categories.get(categoryIndex).name);
-    int mealIndex = (int) (app.weatherAPI.feels_like * app.weatherAPI.humidity);
+    ArrayList<Meal> meals = app.mealAPI.searchByCategory(categories.get(categoryIndex % categories.size()).name);
+    int mealIndex = (int) (data.visibility * (data.cloud + 1));
     Meal meal = meals.get(mealIndex % meals.size());
     Meal result = app.mealAPI.searchByID(meal.id).get(0);
     //System.out.println("meals:" + meals);
