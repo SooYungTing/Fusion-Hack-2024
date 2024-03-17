@@ -8,7 +8,7 @@ public class WeatherData
   int humidity;
   float pressure;
   //紫外线等级 国际上从0开始 到11+后无上限了
-  int uvIndex;
+  float uvIndex;
   String weatherCondition;
 
   //风速: 单位km/h
@@ -22,7 +22,7 @@ public class WeatherData
   //白云占天空占百分比 int %
   int cloud;
 
-  public WeatherData(float temperature, int humidity, float pressure, int uvIndex,
+  public WeatherData(float temperature, int humidity, float pressure, float uvIndex,
       String weatherCondition, float windSpeed, float precipitation, float visibility, int daynight,
       int cloud) {
     this.temperature = temperature;
@@ -37,10 +37,10 @@ public class WeatherData
     this.cloud = cloud;
   }
 
-  public WeatherData(float temperature, int humidity, String weatherCondition)
+/*  public WeatherData(float temperature, int humidity, String weatherCondition)
   {
     this.temperature = temperature;
     this.humidity = humidity;
     this.weatherCondition = weatherCondition;
-  }
+  }*/
 }

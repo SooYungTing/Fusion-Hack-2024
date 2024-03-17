@@ -10,10 +10,10 @@ public class WeatherAPI {
   String apiKey = "73af00dfcb1d4c3f9ca123723241603";
   StringBuffer response;
   JSONObject jsonResult;
-  float temperature;
-  float feels_like;
-  String condition;
-  int humidity;
+//  float temperature;
+//  float feels_like;
+//  String condition;
+//  int humidity;
   App app;
 
   public WeatherAPI(App app)
@@ -29,7 +29,7 @@ public class WeatherAPI {
   /**
    * @param location the String of the city name, e.g. London, or Postcode, e.g. SO163FY
    */
-  public void query(String location)
+  public WeatherData query(String location)
   {
     String urlString = getURLString(location.replaceAll(" ", ""));
 
@@ -57,11 +57,19 @@ public class WeatherAPI {
         jsonResult = new JSONObject(response.toString());
 
         // print relevant weather data
-        temperature = jsonResult.getJSONObject("current").getFloat("temp_c");
-        feels_like = jsonResult.getJSONObject("current").getFloat("feelslike_c");
-        condition = jsonResult.getJSONObject("current").getJSONObject("condition").getString("text");
+        float temperature = jsonResult.getJSONObject("current").getFloat("temp_c");
+        //float feels_like = jsonResult.getJSONObject("current").getFloat("feelslike_c");
+        String condition = jsonResult.getJSONObject("current").getJSONObject("condition").getString("text");
+        float uvIndex = jsonResult.getJSONObject("current").getFloat("uv");
+        float windSpeed = jsonResult.getJSONObject("current").getFloat("wind_kph");
+        float precipitation = jsonResult.getJSONObject("current").getFloat("precip_mm");
+        float visibility = jsonResult.getJSONObject("current").getFloat("vis_km");
+        int daynight = jsonResult.getJSONObject("current").getInt("is_day");
+        int cloud = jsonResult.getJSONObject("current").getInt("cloud");
+        int humidity = jsonResult.getJSONObject("current").getInt("humidity");
+        float pressure = jsonResult.getJSONObject("current").getInt("pressure_in");
 
-        humidity = jsonResult.getJSONObject("current").getInt("humidity");
+        return new WeatherData(temperature, humidity, pressure, uvIndex, condition, windSpeed, precipitation, visibility, daynight, cloud);
 
         //System.out.println("Current temperature in " + location + " is: " + temperature + "°C");
         //System.out.println("Current temperature feels like " + feels_like + "°C");
@@ -71,6 +79,7 @@ public class WeatherAPI {
     } catch (Exception e) {
       e.printStackTrace();
     }
+    return null;
   }
 
   public static void main(String[] args) {
