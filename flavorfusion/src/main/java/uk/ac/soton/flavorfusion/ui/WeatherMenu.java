@@ -265,7 +265,9 @@ public class WeatherMenu extends JFrame{
                 // Close current WeatherMenu window.
                 dispose();
                 // Display RecipeMenu window.
-                new RecipeMenu(WeatherMenu.this).setVisible(true);
+                new RecipeMenu(WeatherMenu.this,new Meal("12345","Gongbao","Chicken")).setVisible(true);
+                //TODO:replace the new Meal with a meal class as the second parameter.
+
               }
             }
           }

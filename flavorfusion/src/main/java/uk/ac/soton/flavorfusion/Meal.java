@@ -10,7 +10,7 @@ public class Meal {
   String id;
   String name;
   String category;
-  String instructions;
+  public String instructions;
   ArrayList<Ingredient> ingredients;
   URL imageAddress;
 
