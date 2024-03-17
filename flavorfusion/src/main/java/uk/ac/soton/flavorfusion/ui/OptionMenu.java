@@ -66,6 +66,18 @@ public class OptionMenu extends JFrame {
         makeButtonTransparent(weatherButton);
         weatherButton.setFont(new Font("Arial", Font.BOLD, 40));
         addButtonHoverEffect(weatherButton, Color.GRAY, weatherButton.getForeground());
+    weatherButton.addActionListener(
+        new ActionListener() {
+          @Override
+          public void actionPerformed(ActionEvent e) {
+            // Hide the current OptionMenu
+            setVisible(false);
+
+            // Show the DIYMenu
+            WeatherMenu weatherMenu = new WeatherMenu(OptionMenu.this);
+            weatherMenu.setVisible(true);
+          }
+        });
         rightPanel.add(weatherButton);
 
         JPanel orWord = new JPanel();
