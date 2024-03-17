@@ -36,7 +36,7 @@ public class InstructionMenu extends JFrame{
     }
 
 
-    private void initComponents() {
+    /*private void initComponents() {
         // Create a panel with FlowLayout for centering the title
         JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
@@ -83,5 +83,61 @@ public class InstructionMenu extends JFrame{
 
         // Add the button panel to the SOUTH region of the JFrame
         add(buttonPanel, BorderLayout.SOUTH);
+    }*/
+    private void initComponents() {
+        // Assuming "background.jpg" is in your project directory or an accessible path
+        BackgroundPanel backgroundPanel = new BackgroundPanel("/images/Background 1.PNG");
+        backgroundPanel.setLayout(new BorderLayout());
+        add(backgroundPanel);
+
+        // Other components...
+        JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        titlePanel.setOpaque(false); // Make panel transparent
+
+        JLabel titleLabel = new JLabel("FlavorFusion Instructions");
+        titlePanel.add(titleLabel);
+
+        backgroundPanel.add(titlePanel, BorderLayout.NORTH);
+
+        JTextArea instructionsText = new JTextArea(10, 40);
+        instructionsText.setText("Welcome to FlavorFusion!\n\n" +
+                "Here's how to get started:\n" +
+                "1. Choose your base flavor.\n" +
+                "2. Select additional ingredients.\n" +
+                "3. Mix them up!\n" +
+                "4. Enjoy your personalized flavor creation.");
+        instructionsText.setEditable(false);
+        instructionsText.setOpaque(false); // Make text area transparent
+        backgroundPanel.add(instructionsText, BorderLayout.CENTER);
+
+        // Continue with JButton and other components, ensuring to add them to backgroundPanel
+        // and setting them opaque as needed
+
+        // Create a back button
+        JButton backButton = new JButton("Back");
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Hide the OptionMenu
+                setVisible(false); // 修改了这里，隐藏了当前的 OptionMenu 窗口
+
+                // Show the previous window (MainMenu)
+                if (previousWindow != null) {
+                    previousWindow.setVisible(true); // 修改了这里，显示之前的 MainMenu 窗口
+                }
+            }
+        });
+
+        // Create a panel for the back button with BorderLayout
+        JPanel buttonPanel = new JPanel(new BorderLayout());
+        // Add the back button to the EAST (right) side of the buttonPanel
+        buttonPanel.add(backButton, BorderLayout.EAST);
+
+        // Add some space on the right for better visual appearance
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
+
+        // Add the button panel to the SOUTH region of the JFrame
+        add(buttonPanel, BorderLayout.SOUTH);
     }
+
 }
