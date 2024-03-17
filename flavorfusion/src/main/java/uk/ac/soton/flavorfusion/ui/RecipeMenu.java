@@ -1,9 +1,17 @@
 package uk.ac.soton.flavorfusion.ui;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 import java.awt.*;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 
@@ -541,6 +549,108 @@ public class RecipeMenu extends JFrame {
 
     //add(scrollPane, BorderLayout.CENTER); // Add the scroll pane to the main frame
   }
+
+  //TODO: seems to have added image in but not shown in the box
+  /*private void initComponents() {
+    // Set up the frame and background image
+    setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/Background 1.PNG")))));
+    setLayout(new BorderLayout());
+
+    // Initialize the text area for the recipe steps
+    JTextArea stepsText =
+        new JTextArea(
+            "Cultivated who resolution connection motionless did occasional. Journey promise if it colonel. Can all mirth abode nor hills added. Them men does for body pure. Far end not horses remain sister. Mr parish is to he answer roused piqued afford sussex. It abode words began enjoy years no do \uFEFFno. Tried spoil as heart visit blush or. Boy possible blessing sensible set but margaret interest. Off tears are day blind smile alone had.\n"
+                + "\n"
+                + "Unpleasant astonished an diminution up partiality. Noisy an their of meant. Death means up civil do an offer wound of. Called square an in afraid direct. Resolution diminution conviction so mr at unpleasing simplicity no. No it as breakfast up conveying earnestly immediate principle. Him son disposed produced humoured overcame she bachelor improved. Studied however out wishing but inhabit fortune windows.\n"
+                + "\n"
+                + "So if on advanced addition absolute received replying throwing he. Delighted consisted newspaper of unfeeling as neglected so. Tell size come hard mrs and four fond are. Of in commanded earnestly resources it. At quitting in strictly up wandered of relation answered felicity. Side need at in what dear ever upon if. Same down want joy neat ask pain help she. Alone three stuff use law walls fat asked. Near do that he help.\n"
+                + "\n"
+                + "His having within saw become ask passed misery giving. Recommend questions get too fulfilled. He fact in we case miss sake. Entrance be throwing he do blessing up. Hearts warmth in genius do garden advice mr it garret. Collected preserved are middleton dependent residence but him how. Handsome weddings yet mrs you has carriage packages. Preferred joy agreement put continual elsewhere delivered now. Mrs exercise felicity had men speaking met. Rich deal mrs part led pure will but.\n"
+                + "\n"
+                + "Your it to gave life whom as. Favourable dissimilar resolution led for and had. At play much to time four many. Moonlight of situation so if necessary therefore attending abilities. Calling looking enquire up me to in removal. Park fat she nor does play deal our. Procured sex material his offering humanity laughing moderate can. Unreserved had she nay dissimilar admiration interested. Departure performed exquisite rapturous so ye me resources.\n"
+                + "\n"
+                + "Contented get distrusts certainty nay are frankness concealed ham. On unaffected resolution on considered of. No thought me husband or colonel forming effects. End sitting shewing who saw besides son musical adapted. Contrasted interested eat alteration pianoforte sympathize was. He families believed if no elegance interest surprise an. It abode wrong miles an so delay plate. She relation own put outlived may disposed.\n"
+                + "\n"
+                + "Old education him departure any arranging one prevailed. Their end whole might began her. Behaved the comfort another fifteen eat. Partiality had his themselves ask pianoforte increasing discovered. So mr delay at since place whole above miles. He to observe conduct at detract because. Way ham unwilling not breakfast furniture explained perpetual. Or mr surrounded conviction so astonished literature. Songs to an blush woman be sorry young. We certain as removal attempt.\n"
+                + "\n"
+                + "We diminution preference thoroughly if. Joy deal pain view much her time. Led young gay would now state. Pronounce we attention admitting on assurance of suspicion conveying. That his west quit had met till. Of advantage he attending household at do perceived. Middleton in objection discovery as agreeable. Edward thrown dining so he my around to.\n"
+                + "\n"
+                + "Do am he horrible distance marriage so although. Afraid assure square so happen mr an before. His many same been well can high that. Forfeited did law eagerness allowance improving assurance bed. Had saw put seven joy short first. Pronounce so enjoyment my resembled in forfeited sportsman. Which vexed did began son abode short may. Interested astonished he at cultivated or me. Nor brought one invited she produce her.\n"
+                + "\n"
+                + "Much did had call new drew that kept. Limits expect wonder law she. Now has you views woman noisy match money rooms. To up remark it eldest length oh passed. Off because yet mistake feeling has men. Consulted disposing to moonlight ye extremity. Engage piqued in on coming.\n");
+    stepsText.setWrapStyleWord(true);
+    stepsText.setLineWrap(true);
+    stepsText.setEditable(false);
+    stepsText.setOpaque(false); // Ensure the text area is transparent
+
+     //Load the image and add it to a label
+    JLabel imageLabel = new JLabel(loadImage("/Users/yungtingsoo/Desktop/Fusion-Hack-2024/flavorfusion/src/main/resources/images/FlavourFusion Logo.png")); // Make sure this path is correct
+    imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+    BufferedImage bufferedImage = null;
+    try {
+      bufferedImage = ImageIO.read(new File("/Users/yungtingsoo/Desktop/Fusion-Hack-2024/flavorfusion/src/main/resources/images/FlavourFusion Logo.png"));
+    } catch (IOException e) {
+      e.printStackTrace();
+      JOptionPane.showMessageDialog(this, "Image could not be loaded.", "Image Load Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    // If the image was loaded successfully, display it in a JLabel
+      JLabel imageLabel = null;
+      if (bufferedImage != null) {
+      ImageIcon imageIcon = new ImageIcon(bufferedImage);
+          imageLabel = new JLabel(imageIcon);
+          imageLabel.setHorizontalAlignment(JLabel.CENTER);
+      // ... add the label to your GUI ...
+    }
+
+    // Load the image from your directory
+    *//*ImageIcon image = new ImageIcon("/Users/yungtingsoo/Desktop/Fusion-Hack-2024/flavorfusion/src/main/resources/images/FlavourFusion Logo.png"); // replace with your local path
+
+    // Add the image to a label
+    JLabel imageLabel = new JLabel(image);*//*
+    //imageLabel.setHorizontalAlignment(JLabel.CENTER);
+
+    // Create a panel to hold both the image and the text area
+    JPanel contentPanel = new JPanel();
+    contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.PAGE_AXIS));
+    contentPanel.add(imageLabel);
+    contentPanel.add(stepsText);
+    contentPanel.setOpaque(false); // Ensure the panel is transparent
+
+    // Create a scroll pane to make the content panel scrollable
+    JScrollPane scrollPane = new JScrollPane(contentPanel);
+    scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+    scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    scrollPane.setOpaque(false);
+    scrollPane.getViewport().setOpaque(false);
+
+    // Add a mouse wheel listener to allow scrolling
+    scrollPane.addMouseWheelListener(new MouseWheelListener() {
+      public void mouseWheelMoved(MouseWheelEvent e) {
+        JScrollBar bar = scrollPane.getVerticalScrollBar();
+        int amount = e.getWheelRotation() * bar.getUnitIncrement();
+        bar.setValue(bar.getValue() + amount);
+      }
+    });
+
+    // Create padding around the content panel
+    int horizontalPadding = 150; // Adjust this value as needed
+    int verticalPadding = 50;    // Adjust this value as needed
+    JPanel paddingPanel = new JPanel(new BorderLayout());
+    paddingPanel.setOpaque(false);
+    paddingPanel.setBorder(BorderFactory.createEmptyBorder(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding));
+    paddingPanel.add(scrollPane, BorderLayout.CENTER);
+
+    // Add the padding panel to the frame
+    getContentPane().add(paddingPanel, BorderLayout.CENTER);
+
+    // Finalize the frame setup
+    setSize(1000, 700);
+    setLocationRelativeTo(null);
+    setVisible(true);
+  }*/
+
 
 
 
