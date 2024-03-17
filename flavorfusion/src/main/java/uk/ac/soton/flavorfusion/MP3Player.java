@@ -32,7 +32,7 @@ public class MP3Player implements Runnable{
 
   public static void main(String[] args) {
     //Thread musicThread = new Thread(new MP3Player("src/main/resources/music/Daft Punk - Random Access Memories (Vanderway Edit).mp3"));
-    Thread musicThread = new Thread(new MP3Player("src/main/resources/music/Maryse Letarte - Ô Traîneau Dans Le Cie.mp3"));
+    Thread musicThread = new Thread(new MP3Player("/flavourfusion/src/main/resources/music/track1.mp3"));
     musicThread.start();
   }
 }

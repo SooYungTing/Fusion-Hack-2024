@@ -1,5 +1,6 @@
 package uk.ac.soton.flavorfusion;
 
+import java.net.URL;
 import uk.ac.soton.flavorfusion.ui.MainMenu;
 
 import javax.swing.*;
@@ -8,7 +9,9 @@ import java.util.Objects;
 
 public class App {
     public static void main(String[] args) {
-        Thread musicThread = new Thread(new MP3Player("src/main/resources/music/Maryse Letarte - Ô Traîneau Dans Le Cie.mp3"));
+        URL urlString = App.class.getResource("/music/track1.mp3");
+        System.out.println(urlString);
+        Thread musicThread = new Thread(new MP3Player(urlString.getPath()));
         musicThread.start();
         // Ensure the GUI is created on the Event Dispatch Thread for thread safety
         SwingUtilities.invokeLater(new Runnable() {
