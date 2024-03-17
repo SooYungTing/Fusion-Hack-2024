@@ -1,6 +1,8 @@
 package uk.ac.soton.flavorfusion.ui;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.net.URL;
@@ -8,6 +10,8 @@ import java.util.Objects;
 import javax.swing.*;
 
 public class RecipeMenu extends JFrame {
+
+  private JFrame previousWindow;
 
   public RecipeMenu() {
     // Set the title of the window
@@ -137,6 +141,35 @@ public class RecipeMenu extends JFrame {
             bar.setValue(bar.getValue() + amount);
           }
         });
+
+    // Panel for the buttons with empty border for spacing
+    JPanel buttonPanel = new JPanel(new BorderLayout());
+    buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30)); // Add spacing
+    buttonPanel.setOpaque(false); // Make panel transparent
+
+// Back button
+    JButton backButton = new JButton("Back");
+    backButton.addActionListener((ActionEvent e) -> {
+      setVisible(false);
+      if (previousWindow != null) {
+        previousWindow.setVisible(true);
+      }
+    });
+    buttonPanel.add(backButton, BorderLayout.WEST); // Add back button to the left
+
+// Exit button
+    JButton exitButton = new JButton("Exit");
+    exitButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        System.exit(0); // Exit the program
+      }
+    });
+    buttonPanel.add(exitButton, BorderLayout.EAST); // Add exit button to the right
+
+// Add the button panel to the SOUTH region of the JFrame
+    add(buttonPanel, BorderLayout.SOUTH);
+
 
     getContentPane().add(containerPanel, BorderLayout.CENTER);
   }
