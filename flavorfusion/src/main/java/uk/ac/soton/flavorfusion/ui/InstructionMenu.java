@@ -69,8 +69,8 @@ public class InstructionMenu extends JFrame {
                 + "Here's how to get started:\n"
                 + "1. Press the 'Start' button to start the app.\n"
                 + "2. On the option menu, you can choose recipe through weather.\n"
-                + "       Choose '' if you would like to input the weather information.\n"
-                + "       Choose '' if you would like to input the city name.\n"
+                + "       Choose 'Choose a city, cook its weather!' button, if you would like to input the weather information.\n"
+                + "       Choose 'Set the weather, find the flavor!' Button if you would like to input the city name.\n"
                 + "3. The Recipe is then generated for you.\n"
                 + "4. Enjoy your personalized recipe recommendation!");
     JScrollPane scrollPane = new JScrollPane(stepsText);
