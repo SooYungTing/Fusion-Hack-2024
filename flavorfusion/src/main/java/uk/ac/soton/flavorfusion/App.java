@@ -23,15 +23,6 @@ public class App {
         });
     }
 
-    /*public static void setIconImage(JFrame frame) {
-        // Set custom icon for the frame
-        try {
-            ImageIcon icon = new ImageIcon(Objects.requireNonNull(App.class.getResource("/images/icon.PNG")));
-            frame.setIconImage(icon.getImage());
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-    }*/
     public static void setIconImage(JFrame frame) {
         // Set custom icon for the frame
         try {

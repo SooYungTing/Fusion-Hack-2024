@@ -65,8 +65,6 @@ public class RecipeMenu extends JFrame {
     textPane.setEditable(false); // Make the JTextPane non-editable
     textPane.setOpaque(false); // Make its background transparent
 
-    // Assuming "/images/yourImage.png" is the path to your image
-    //URL imageUrl = getClass().getResource("/images/FlavourFusion Logo.png");
     String imagePath = meal.imageAddress != null ? meal.imageAddress.toString() : "";
     String inst=meal.instructions;
 

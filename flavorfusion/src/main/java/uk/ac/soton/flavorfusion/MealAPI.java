@@ -17,11 +17,6 @@ public class MealAPI {
   static StringBuffer response;
   static JSONObject jsonResult;
 
-/*  public MealAPI(App app)
-  {
-    this.app = app;
-  }*/
-
   public static ArrayList<Category> listCategories()
   {
     ArrayList<Category> categoriesFound = new ArrayList<>();
