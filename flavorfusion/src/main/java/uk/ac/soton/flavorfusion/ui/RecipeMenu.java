@@ -125,7 +125,7 @@ public class RecipeMenu extends JFrame {
           }
         });
 
-    buttonPanel.add(backButton, BorderLayout.WEST); // Add back button to the left
+    buttonPanel.add(backButton, BorderLayout.EAST); // Add back button to the left
 
     // Exit button
     JButton exitButton = new JButton("Exit");
@@ -136,7 +136,7 @@ public class RecipeMenu extends JFrame {
             System.exit(0); // Exit the program
           }
         });
-    buttonPanel.add(exitButton, BorderLayout.EAST); // Add exit button to the right
+    buttonPanel.add(exitButton, BorderLayout.WEST); // Add exit button to the right
 
     // Add the button panel to the SOUTH region of the JFrame
     add(buttonPanel, BorderLayout.SOUTH);
