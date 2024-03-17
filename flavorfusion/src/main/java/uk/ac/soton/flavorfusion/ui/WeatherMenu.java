@@ -87,7 +87,7 @@ public class WeatherMenu extends JFrame{
 
     entryPanel1.setOpaque(false);
 
-    JLabel labelTitle1 = new JLabel("Temperature(°C):" + '\t'); // 替换为对应的标题，如"temperature: "
+    JLabel labelTitle1 = new JLabel("Temperature(°C):"); // 替换为对应的标题，如"temperature: "
 
     labelTitle1.setOpaque(false);
 
@@ -102,7 +102,7 @@ public class WeatherMenu extends JFrame{
 
     entryPanel2.setOpaque(false);
 
-    JLabel labelTitle2 = new JLabel("Pressure:"); // 替换为对应的标题，如"temperature: "
+    JLabel labelTitle2 = new JLabel("Pressure(inHg):"); // 替换为对应的标题，如"temperature: "
 
     labelTitle2.setOpaque(false);
 
@@ -117,7 +117,7 @@ public class WeatherMenu extends JFrame{
 
     entryPanel3.setOpaque(false);
 
-    JLabel labelTitle3 = new JLabel("Humidity:"); // 替换为对应的标题，如"temperature: "
+    JLabel labelTitle3 = new JLabel("Humidity(%):"); // 替换为对应的标题，如"temperature: "
 
     labelTitle3.setOpaque(false);
 
@@ -162,7 +162,7 @@ public class WeatherMenu extends JFrame{
 
     entryPanel6.setOpaque(false);
 
-    JLabel labelTitle6 = new JLabel("Wind Speed:"); // 替换为对应的标题，如"temperature: "
+    JLabel labelTitle6 = new JLabel("Wind Speed(km/h):"); // 替换为对应的标题，如"temperature: "
 
     labelTitle6.setOpaque(false);
 
@@ -177,7 +177,7 @@ public class WeatherMenu extends JFrame{
 
     entryPanel7.setOpaque(false);
 
-    JLabel labelTitle7 = new JLabel("Precipitation:"); // 替换为对应的标题，如"temperature: "
+    JLabel labelTitle7 = new JLabel("Precipitation(mm):"); // 替换为对应的标题，如"temperature: "
 
     labelTitle7.setOpaque(false);
 
@@ -192,7 +192,7 @@ public class WeatherMenu extends JFrame{
 
     entryPanel8.setOpaque(false);
 
-    JLabel labelTitle8 = new JLabel("Visibility:"); // 替换为对应的标题，如"temperature: "
+    JLabel labelTitle8 = new JLabel("Visibility(km):"); // 替换为对应的标题，如"temperature: "
 
     labelTitle8.setOpaque(false);
 
@@ -222,7 +222,7 @@ public class WeatherMenu extends JFrame{
 
     entryPanel10.setOpaque(false);
 
-    JLabel labelTitle10 = new JLabel("Wind Direction:"); // 替换为对应的标题，如"temperature: "
+    JLabel labelTitle10 = new JLabel("Cloud (%):"); // 替换为对应的标题，如"temperature: "
 
     labelTitle10.setOpaque(false);
 
@@ -254,9 +254,4 @@ public class WeatherMenu extends JFrame{
     });
   }
 
-
-  public static void main(String[] args) {
-
-    SwingUtilities.invokeLater(() -> new WeatherMenu());
-  }
 }
