@@ -79,7 +79,7 @@ public class DIYMenu extends JFrame {
 
         // Commit button
         JButton commitButton = new JButton("Commit");
-        commitButton.addActionListener(new ActionListener() {
+        /*commitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Hide the current DIYMenu window
@@ -89,7 +89,13 @@ public class DIYMenu extends JFrame {
                 RecipeMenu recipeMenu = new RecipeMenu();
                 recipeMenu.setVisible(true);
             }
+        });*/
+        commitButton.addActionListener(e -> {
+            setVisible(false); // Hide DIYMenu
+            RecipeMenu recipeMenu = new RecipeMenu(this); // Pass DIYMenu as the previous window to RecipeMenu
+            recipeMenu.setVisible(true);
         });
+
         commitButtonPanel.add(commitButton);
 
         // Add panels to the background panel
