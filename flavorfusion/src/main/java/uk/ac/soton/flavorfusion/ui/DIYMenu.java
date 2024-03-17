@@ -220,7 +220,7 @@ public class DIYMenu extends JFrame {
           {
             setVisible(false); // Hide DIYMenu
             RecipeMenu recipeMenu =
-                new RecipeMenu(this,new Meal("12345","Gongbao","Chicken")); // Pass DIYMenu as the previous window to RecipeMenu
+                new RecipeMenu(this,meal); // Pass DIYMenu as the previous window to RecipeMenu
                 //TODO:replace the new Meal with a meal class as the second parameter.
 
             recipeMenu.setVisible(true);

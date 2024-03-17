@@ -278,6 +278,10 @@ public class WeatherMenu extends JFrame{
 
               }
             }
+            else
+            {
+              JOptionPane.showMessageDialog(WeatherMenu.this, "cannot generate recipe due to insufficient data.", "oops", JOptionPane.WARNING_MESSAGE);
+            }
           }
         });
 
@@ -285,7 +289,14 @@ public class WeatherMenu extends JFrame{
       @Override
       public void actionPerformed(ActionEvent e) {
         String location = textFieldCity.getText();
-        wd = WeatherAPI.query(location);
+        WeatherData tmp = WeatherAPI.query(location);
+        if (tmp == null)
+        {
+          JOptionPane.showMessageDialog(WeatherMenu.this, "Cannot gather weather information. Please retry.", "oops", JOptionPane.WARNING_MESSAGE);
+          return;
+        }
+
+        wd = tmp;
         textField1.setText(Float.toString(wd.temperature));
         textField2.setText(Float.toString(wd.pressure));
         textField3.setText(Integer.toString(wd.humidity));
