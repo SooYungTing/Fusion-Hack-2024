@@ -17,11 +17,19 @@ public class Meal {
   /**
    * data returned when searching by meal name or id
    */
-  public Meal(String id, String name, String category, String instructions) {
+  public Meal(String id, String name, String category, String instructions, String imageURL) {
     this.id = id;
     this.name = name;
     this.category = category;
     this.instructions = instructions;
+    try {
+      imageAddress = new URL(imageURL);
+      System.out.println("imageAddress success! URL: " + imageAddress);
+    }
+    catch (MalformedURLException e)
+    {
+      e.printStackTrace();
+    }
     ingredients = new ArrayList<>();
   }
 

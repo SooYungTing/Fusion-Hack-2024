@@ -153,8 +153,10 @@ public class MealAPI {
           String strMeal = meal.getString("strMeal");
           String strCategory = meal.getString("strCategory");
           String strInstructions = meal.getString("strInstructions");
+          String imageURL = meal.getString("strMealThumb");
+          System.out.println("imageURL: " + imageURL);
 
-          Meal mealObj = new Meal(idMeal, strMeal, strCategory, strInstructions);
+          Meal mealObj = new Meal(idMeal, strMeal, strCategory, strInstructions, imageURL);
 
           //System.out.println("Meal ID: " + idMeal);
           //System.out.println("Meal Name: " + strMeal);
