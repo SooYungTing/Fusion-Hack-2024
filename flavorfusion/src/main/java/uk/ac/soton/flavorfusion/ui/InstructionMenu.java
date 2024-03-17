@@ -67,10 +67,12 @@ public class InstructionMenu extends JFrame {
         new JTextArea(
             "Welcome to FlavorFusion!\n\n"
                 + "Here's how to get started:\n"
-                + "1. Choose your base flavor.\n"
-                + "2. Select additional ingredients.\n"
-                + "3. Mix them up!\n"
-                + "4. Enjoy your personalized flavor creation.");
+                + "1. Press the 'Start' button to start the app.\n"
+                + "2. On the option menu, you can choose recipe through weather.\n"
+                + "       Choose '' if you would like to input the weather information.\n"
+                + "       Choose '' if you would like to input the city name.\n"
+                + "3. The Recipe is then generated for you.\n"
+                + "4. Enjoy your personalized recipe recommendation!");
     JScrollPane scrollPane = new JScrollPane(stepsText);
 
     textPanel.add(scrollPane, BorderLayout.CENTER);
