@@ -55,21 +55,30 @@ public class OptionMenu extends JFrame {
         // Create a panel for the right half of the window
         JPanel rightPanel = new JPanel();
         rightPanel.setOpaque(false); // Make panel transparent
-        rightPanel.setLayout(new GridLayout(2, 2, 0, 0)); // 2 rows, 2 columns, no gap
+        rightPanel.setLayout(new GridLayout(3, 2, 0, 0)); // 2 rows, 2 columns, no gap
         rightPanel.setBorder(BorderFactory.createEmptyBorder(125, 50, 175, 50));
 
         // Add the right panel to the CENTER region of the JFrame
         add(rightPanel, BorderLayout.CENTER);
 
         // Create the "Weather" button
-        JButton weatherButton = new JButton("Current Weather");
+        JButton weatherButton = new JButton("Choose a city, cook its weather!");
         makeButtonTransparent(weatherButton);
+        weatherButton.setFont(new Font("Arial", Font.BOLD, 40));
         addButtonHoverEffect(weatherButton, Color.GRAY, weatherButton.getForeground());
         rightPanel.add(weatherButton);
 
+        JPanel orWord = new JPanel();
+        JLabel or = new JLabel("Or..");
+        or.setFont(new Font("Arial", Font.BOLD,30));
+        orWord.add(or);
+        orWord.setOpaque(false);
+        rightPanel.add(orWord);
+
         // Create the "DIY" button
-        JButton diyButton = new JButton("DIY Weather");
+        JButton diyButton = new JButton("Set the weather, find the flavor!");
         makeButtonTransparent(diyButton);
+        diyButton.setFont(new Font("Arial", Font.BOLD, 50));
         addButtonHoverEffect(diyButton, Color.GRAY, diyButton.getForeground());
         diyButton.addActionListener(new ActionListener() {
             @Override
@@ -153,7 +162,7 @@ public class OptionMenu extends JFrame {
         button.setContentAreaFilled(false);
         button.setBorderPainted(false);
         button.setFocusPainted(false);
-        button.setFont(new Font("Arial", Font.BOLD, 40));
         button.setForeground(Color.BLACK);
     }
 }
+
