@@ -1,6 +1,8 @@
 package uk.ac.soton.flavorfusion.ui;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Objects;
 import javax.swing.*;
 
@@ -240,6 +242,16 @@ public class WeatherMenu extends JFrame{
     rightPanel.setOpaque(false);
 
     setVisible(true);
+
+    buttonContinue.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        // 关闭当前 WeatherMenu 窗口
+        dispose();
+        // 显示 RecipeMenu 窗口
+        new RecipeMenu(WeatherMenu.this).setVisible(true);
+      }
+    });
   }
 
 

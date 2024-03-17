@@ -94,11 +94,11 @@ public class OptionMenu extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Hide the OptionMenu
-                setVisible(false); // 修改了这里，隐藏了当前的 OptionMenu 窗口
+                setVisible(false);
 
                 // Show the previous window (MainMenu)
                 if (previousWindow != null) {
-                    previousWindow.setVisible(true); // 修改了这里，显示之前的 MainMenu 窗口
+                    previousWindow.setVisible(true);
                 }
             }
         });
