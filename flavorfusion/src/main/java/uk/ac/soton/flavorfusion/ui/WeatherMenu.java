@@ -8,7 +8,7 @@ import javax.swing.*;
 
 public class WeatherMenu extends JFrame{
 
-  public WeatherMenu() {
+  public WeatherMenu(OptionMenu optionMenu) {
     // 设置整个窗体的大小
     setSize(1000, 700);
     // 设置窗体的标题
