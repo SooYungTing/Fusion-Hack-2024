@@ -96,6 +96,19 @@ public class MainMenu extends JFrame {
 
         // Set the font for the "Instruction" button
         instructionButton.setFont(new Font("Arial", Font.BOLD, 32));
+
+        instructionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Create and display OptionMenu
+                InstructionMenu instructionMenu = new InstructionMenu(MainMenu.this);
+                instructionMenu.setVisible(true);
+
+                // Hide the MainMenu
+                setVisible(false);
+            }
+        });
+
         // Add the "Instruction" button to the right panel
         rightPanel.add(instructionButton);
 
@@ -161,6 +174,15 @@ public class MainMenu extends JFrame {
             }
         });
     }
+    public static void main(String[] args) {
+        // Ensure the GUI is created on the Event Dispatch Thread for thread safety
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new MainMenu().setVisible(true);
+            }
+        });
+    }
+
 }
 
 class BackgroundPanel extends JPanel {
