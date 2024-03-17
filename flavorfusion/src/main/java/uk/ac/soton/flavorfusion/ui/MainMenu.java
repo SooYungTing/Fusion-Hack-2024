@@ -1,5 +1,7 @@
 package uk.ac.soton.flavorfusion.ui;
 
+import uk.ac.soton.flavorfusion.App;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,6 +12,10 @@ import java.util.Objects;
 public class MainMenu extends JFrame {
 
     public MainMenu() {
+
+        // Call setIconImage method
+        App.setIconImage(this);
+
         // Set the title of the window
         setTitle("Flavour Fusion");
 

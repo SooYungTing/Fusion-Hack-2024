@@ -1,5 +1,6 @@
 package uk.ac.soton.flavorfusion.ui;
 
+import uk.ac.soton.flavorfusion.App;
 import uk.ac.soton.flavorfusion.Meal;
 
 import java.awt.*;
@@ -17,6 +18,9 @@ public class RecipeMenu extends JFrame {
   public RecipeMenu(JFrame previousWindow, Meal meal) {
     this.previousWindow = previousWindow;
     this.meal=meal;
+
+    // Call setIconImage method
+    App.setIconImage(this);
 
     // Set the title of the window
     setTitle("Recipe Menu");

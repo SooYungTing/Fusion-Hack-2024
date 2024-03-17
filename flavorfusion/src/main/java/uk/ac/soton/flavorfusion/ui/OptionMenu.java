@@ -1,5 +1,7 @@
 package uk.ac.soton.flavorfusion.ui;
 
+import uk.ac.soton.flavorfusion.App;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,6 +13,8 @@ public class OptionMenu extends JFrame {
     private JFrame previousWindow;
 
     public OptionMenu(JFrame previousWindow) {
+        // Call setIconImage method
+        App.setIconImage(this);
         this.previousWindow = previousWindow;
         // Set the title of the window
         setTitle("Brew the Weather: Taste the World");

@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.util.HashMap;
 import java.util.Objects;
 import javax.swing.*;
+
+import uk.ac.soton.flavorfusion.App;
 import uk.ac.soton.flavorfusion.Meal;
 import uk.ac.soton.flavorfusion.MealCalculator;
 import uk.ac.soton.flavorfusion.WeatherData;
@@ -17,6 +19,9 @@ public class DIYMenu extends JFrame {
   private JFrame previousWindow;
 
   public DIYMenu(JFrame previousWindow) {
+    // Call setIconImage method
+    App.setIconImage(this);
+
     this.previousWindow = previousWindow;
 
     setTitle("DIY Menu");

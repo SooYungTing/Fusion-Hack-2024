@@ -1,5 +1,7 @@
 package uk.ac.soton.flavorfusion.ui;
 
+import uk.ac.soton.flavorfusion.App;
+
 import java.awt.*;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
@@ -13,6 +15,9 @@ public class InstructionMenu extends JFrame {
   public InstructionMenu(JFrame previousWindow) {
     // Set the title of the window
     setTitle("FlavorFusion Instructions");
+
+    // Call setIconImage method
+    App.setIconImage(this);
 
     this.previousWindow = previousWindow;
 

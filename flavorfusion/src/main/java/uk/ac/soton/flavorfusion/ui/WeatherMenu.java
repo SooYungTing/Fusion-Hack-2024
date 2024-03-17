@@ -21,6 +21,9 @@ public class WeatherMenu extends JFrame{
     setTitle("Globe-Trotter's Kitchen: Pick a City!");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+    // Call setIconImage method
+    App.setIconImage(this);
+
     // 将带有背景图片的 JLabel 设置为内容面板
     JLabel background = new JLabel(new ImageIcon(
         Objects.requireNonNull(getClass().getResource("/images/Background 1.PNG"))
