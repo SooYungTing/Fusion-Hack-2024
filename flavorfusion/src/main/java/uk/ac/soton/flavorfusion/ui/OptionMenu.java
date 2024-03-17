@@ -7,13 +7,19 @@ public class OptionMenu extends JFrame {
 
     public OptionMenu() {
         // Set the title of the window
-        setTitle("FlavorFusion Instructions");
+        setTitle("FlavorFusion Options");
 
         // Specify an action for the close button
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Set the layout
         setLayout(new BorderLayout());
+
+        // Create an instance of the BackgroundPanel with the path to your background image
+        BackgroundPanel backgroundPanel = new BackgroundPanel("/images/Background 2.PNG");
+        backgroundPanel.setLayout(new BorderLayout());
+        setContentPane(backgroundPanel); 
+
 
         // Add UI components
         initComponents();
@@ -34,7 +40,7 @@ public class OptionMenu extends JFrame {
         JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
         // Create the title label and add it to the panel
-        JLabel titleLabel = new JLabel("FlavorFusion Instructions");
+        JLabel titleLabel = new JLabel("FlavorFusion Options");
         titlePanel.add(titleLabel);
 
         // Add the title panel to the NORTH region of the JFrame
@@ -73,10 +79,13 @@ public class OptionMenu extends JFrame {
         backButtonPanel.add(backButton);
         // Add the button panel to the SOUTH region of the JFrame
         add(backButtonPanel, BorderLayout.SOUTH);
+
+        titlePanel.setOpaque(false);
+        rightPanel.setOpaque(false);
+        backButtonPanel.setOpaque(false);
     }
 
     public static void main(String[] args){
         new OptionMenu();
     }
 }
-
