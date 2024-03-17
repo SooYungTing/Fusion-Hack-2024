@@ -2,10 +2,17 @@ package uk.ac.soton.flavorfusion.ui;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.HashMap;
 import java.util.Objects;
 import javax.swing.*;
+import uk.ac.soton.flavorfusion.Meal;
+import uk.ac.soton.flavorfusion.MealCalculator;
+import uk.ac.soton.flavorfusion.WeatherData;
 
 public class DIYMenu extends JFrame {
+
+  HashMap<String, JTextField> inputs = new HashMap<>();
+  JComboBox<String> dayNight;
 
   private JFrame previousWindow;
 
@@ -20,6 +27,128 @@ public class DIYMenu extends JFrame {
     setLocationRelativeTo(null);
     setVisible(true);
   }
+
+  public Meal getMeal()
+  {
+    WeatherData data = null;
+
+    String condition = checkStringData("weather condition");
+    if (condition == null) return null;
+
+    Float temperature = checkFloatData("temperature", -272.15f, 70f);
+    if (temperature == null) return null;
+
+    Integer cloud = checkIntegerData("cloud", 0, 100);
+    if (cloud == null) return null;
+
+    Float wind_speed = checkFloatData("wind speed", 0f, 100f);
+    if (wind_speed == null) return null;
+
+    Float pressure = checkFloatData("pressure", 0f, 50f);
+    if (pressure == null) return null;
+
+    Float precipitation = checkFloatData("precipitation", 0f, 500f);
+    if (precipitation == null) return null;
+
+    Integer humidity = checkIntegerData("humidity", 0, 100);
+    if (humidity == null) return null;
+
+    Float visibility = checkFloatData("visibility", 0f, 100f);
+    if (visibility == null) return null;
+
+    Float uvIndex = checkFloatData("uv index", 0f, 100f);
+    if (uvIndex == null) return null;
+
+    int dayNightVal = 0;
+    String dayNightString = dayNight.getSelectedItem().toString();
+    if (dayNightString.equals("1")) dayNightVal = 1;
+
+    data = new WeatherData(temperature, humidity, pressure, uvIndex, condition, wind_speed, precipitation, visibility, dayNightVal, cloud);
+    Meal result = MealCalculator.getMeal(data);
+    System.out.println("result: " + result);
+    return result;
+  }
+
+  String checkStringData(String key)
+  {
+    JTextField inputField = inputs.get(key);
+    String raw_text = inputField.getText();
+    boolean showMessage = false;
+    if (raw_text == null || raw_text.isEmpty())
+    {
+      showMessage = true;
+    }
+    else{
+      return raw_text;
+    }
+
+    if (showMessage)
+    {
+      JOptionPane.showMessageDialog(DIYMenu.this,"value for " + key + " should be a non-empty String.", "invalid input", JOptionPane.WARNING_MESSAGE);
+    }
+    return null;
+  }
+
+  Integer checkIntegerData(String key, int min, int max)
+  {
+    JTextField inputField = inputs.get(key);
+    String raw_text = inputField.getText();
+    boolean showMessage = false;
+    if (raw_text == null || raw_text.isEmpty())
+    {
+      showMessage = true;
+    }
+    else
+    {
+      try
+      {
+        Integer i = Integer.parseInt(raw_text);
+        if (i > max || i < min) showMessage = true;
+        else return i;
+      }
+      catch (NumberFormatException e)
+      {
+        showMessage = true;
+      }
+    }
+
+    if (showMessage)
+    {
+      JOptionPane.showMessageDialog(DIYMenu.this,"value for " + key + " should be a integer value with value between " + min + " and " + max + ".", "invalid input", JOptionPane.WARNING_MESSAGE);
+    }
+    return null;
+  }
+
+  Float checkFloatData(String key, float min, float max)
+  {
+    JTextField inputField = inputs.get(key);
+    String raw_text = inputField.getText();
+    boolean showMessage = false;
+    if (raw_text == null || raw_text.isEmpty())
+    {
+      showMessage = true;
+    }
+    else
+    {
+      try
+      {
+        float f = Float.parseFloat(raw_text);
+        if (f > (float) max || f < (float) min) showMessage = true;
+        else return f;
+      }
+      catch (NumberFormatException e)
+      {
+        showMessage = true;
+      }
+    }
+
+    if (showMessage)
+    {
+      JOptionPane.showMessageDialog(DIYMenu.this,"value for " + key + " should be a floating point value with value between " + min + " and " + max + ".", "invalid input", JOptionPane.WARNING_MESSAGE);
+    }
+    return null;
+  }
+
 
   private void initComponents() {
     // Load the background image
@@ -47,18 +176,18 @@ public class DIYMenu extends JFrame {
     inputPanel.setBorder(BorderFactory.createEmptyBorder(50, 80, 20, 80));
 
     // Add Day/Night selection box to the input panel with a title
-    addSelectionBox(inputPanel, "Day/Night:");
+    dayNight = addSelectionBox(inputPanel, "Day/Night:");
 
     // Add input fields to the input panel with titles
-    addInputField(inputPanel, "Weather Condition:");
-    addInputField(inputPanel, "Temperature (°C):");
-    addInputField(inputPanel, "Cloud (%):");
-    addInputField(inputPanel, "Wind Speed (km/h):");
-    addInputField(inputPanel, "Pressure (inHg):");
-    addInputField(inputPanel, "Precipitation (mm):");
-    addInputField(inputPanel, "Humidity (%):");
-    addInputField(inputPanel, "Visibility (km):");
-    addInputField(inputPanel, "UV Index:");
+    addInputField(inputPanel, "Weather Condition:", "weather condition");
+    addInputField(inputPanel, "Temperature (°C):", "temperature");
+    addInputField(inputPanel, "Cloud (%):", "cloud");
+    addInputField(inputPanel, "Wind Speed (km/h):", "wind speed");
+    addInputField(inputPanel, "Pressure (inHg):", "pressure");
+    addInputField(inputPanel, "Precipitation (mm):", "precipitation");
+    addInputField(inputPanel, "Humidity (%):", "humidity");
+    addInputField(inputPanel, "Visibility (km):", "visibility");
+    addInputField(inputPanel, "UV Index:", "uv index");
 
     // Panel for the back button
     JPanel backButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
@@ -84,10 +213,16 @@ public class DIYMenu extends JFrame {
     JButton commitButton = new JButton("Commit");
     commitButton.addActionListener(
         e -> {
-          setVisible(false); // Hide DIYMenu
-          RecipeMenu recipeMenu =
-              new RecipeMenu(this); // Pass DIYMenu as the previous window to RecipeMenu
-          recipeMenu.setVisible(true);
+          Meal meal = getMeal();
+          System.out.println(meal);
+
+          if (meal != null)
+          {
+            setVisible(false); // Hide DIYMenu
+            RecipeMenu recipeMenu =
+                new RecipeMenu(this); // Pass DIYMenu as the previous window to RecipeMenu
+            recipeMenu.setVisible(true);
+          }
         });
 
     commitButtonPanel.add(commitButton);
@@ -105,7 +240,7 @@ public class DIYMenu extends JFrame {
   }
 
   // Method to add an input field to the panel with a title
-  private void addInputField(JPanel panel, String label) {
+  private void addInputField(JPanel panel, String label, String key) {
     JPanel fieldPanel = new JPanel(new BorderLayout());
     fieldPanel.setOpaque(false); // Make panel transparent
     JLabel fieldLabel = new JLabel(label);
@@ -114,10 +249,11 @@ public class DIYMenu extends JFrame {
     fieldPanel.add(fieldLabel, BorderLayout.NORTH);
     fieldPanel.add(textField, BorderLayout.CENTER);
     panel.add(fieldPanel);
+    inputs.put(key, textField);
   }
 
   // Method to add a selection box to the panel with a title
-  private void addSelectionBox(JPanel panel, String label) {
+  private JComboBox<String> addSelectionBox(JPanel panel, String label) {
     JPanel boxPanel = new JPanel(new BorderLayout());
     boxPanel.setOpaque(false); // Make panel transparent
     JLabel boxLabel = new JLabel(label);
@@ -128,5 +264,6 @@ public class DIYMenu extends JFrame {
     boxPanel.add(boxLabel, BorderLayout.NORTH);
     boxPanel.add(comboBox, BorderLayout.CENTER);
     panel.add(boxPanel);
+    return comboBox;
   }
 }

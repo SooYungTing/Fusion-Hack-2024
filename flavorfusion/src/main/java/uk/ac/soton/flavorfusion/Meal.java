@@ -5,7 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
-class Meal {
+public class Meal {
 
   String id;
   String name;
