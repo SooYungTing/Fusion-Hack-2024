@@ -20,7 +20,7 @@ public class MainMenu extends JFrame {
         setLayout(new BorderLayout());
 
         // Here we set the BackgroundPanel as the content pane of the frame
-        setContentPane(new BackgroundPanel("/images/Background 2.PNG")); // Replace with your actual image path
+        setContentPane(new BackgroundPanel("/images/Background 2.PNG"));
 
 
         // Add UI components
@@ -54,9 +54,9 @@ public class MainMenu extends JFrame {
 
         // Create a panel for the right half of the window
         JPanel rightPanel = new JPanel();
-        // Set the layout for the right panel (optional)
+        // Set the layout for the right panel
         rightPanel.setLayout(new GridLayout(3, 1, 0, 20)); // 3 rows, 1 column, gap of 10 pixels between components
-        // Add some space around the components in the right panel (optional)
+        // Add some space around the components in the right panel
         rightPanel.setBorder(BorderFactory.createEmptyBorder(10, 200, 10, 200));
         rightPanel.setOpaque(false);
 
