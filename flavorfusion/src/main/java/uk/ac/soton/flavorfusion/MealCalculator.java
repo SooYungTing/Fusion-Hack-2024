@@ -4,26 +4,26 @@ import java.util.ArrayList;
 
 public class MealCalculator
 {
-  App app;
+/*  App app;
   public MealCalculator(App app)
   {
     this.app = app;
-  }
+  }*/
   public static void main(String[] args){
-    App app = new App();
+    //App app = new App();
     //MealCalculator m = new MealCalculator();
     //WeatherAPI weather = new WeatherAPI();
 
     //weather.query("SO163FY");
     //weather.query("SO173AX");    //594186912
     //weather.query("Beijing");    //65193554
-    app.mealCalculator.getMeal(app.weatherAPI.query("Shanghai"));
+    MealCalculator.getMeal(WeatherAPI.query("Shanghai"));
 
-    app.mealCalculator.getMeal(app.weatherAPI.query("Beijing"));
+    MealCalculator.getMeal(WeatherAPI.query("Beijing"));
 
-    app.mealCalculator.getMeal(app.weatherAPI.query("London"));
+    MealCalculator.getMeal(WeatherAPI.query("London"));
 
-    app.mealCalculator.getMeal(app.weatherAPI.query("SO163FY"));
+    MealCalculator.getMeal(WeatherAPI.query("SO163FY"));
     //weather.query("Paris");//1686825089
     //app.mealAPI.calMealCategory(weather);
   }
@@ -32,10 +32,10 @@ public class MealCalculator
    * call app.mealAPI.query before calling this function
    * @return
    */
-  Meal getMeal(WeatherData data)
+  public static Meal getMeal(WeatherData data)
   {
     if (data == null) return null;
-    ArrayList<Category> categories = app.mealAPI.listCategories();
+    ArrayList<Category> categories = MealAPI.listCategories();
 
     int categoryIndex = 17;
     categoryIndex += data.temperature;
@@ -48,10 +48,10 @@ public class MealCalculator
     categoryIndex *= (Math.pow(data.windSpeed, 2) + 1);
     categoryIndex /= (data.precipitation + 1);
 
-    ArrayList<Meal> meals = app.mealAPI.searchByCategory(categories.get(categoryIndex % categories.size()).name);
+    ArrayList<Meal> meals = MealAPI.searchByCategory(categories.get(categoryIndex % categories.size()).name);
     int mealIndex = (int) (data.visibility * (data.cloud + 1));
     Meal meal = meals.get(mealIndex % meals.size());
-    Meal result = app.mealAPI.searchByID(meal.id).get(0);
+    Meal result = MealAPI.searchByID(meal.id).get(0);
     //System.out.println("meals:" + meals);
     System.out.println("result:" + result);
     return result;

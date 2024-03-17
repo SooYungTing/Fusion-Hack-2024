@@ -38,9 +38,13 @@ class Meal {
   public void setURL(String urlAddress) {
     try
     {
-
-    }catch (MalformedURLException e)
-    this.imageAddress = new URL(urlAddress);
+      this.imageAddress = new URL(urlAddress);
+    }
+    catch (MalformedURLException e)
+    {
+      e.printStackTrace();
+      return;
+    }
   }
 
   public void addIngredient(Ingredient ig) {

@@ -5,9 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 import javax.swing.*;
+import uk.ac.soton.flavorfusion.App;
+import uk.ac.soton.flavorfusion.MealAPI;
 
 public class WeatherMenu extends JFrame{
-
   public WeatherMenu(OptionMenu optionMenu) {
     // 设置整个窗体的大小
     setSize(1000, 700);

@@ -9,20 +9,20 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class MealAPI {
-  App app;
-  String searchByName= "https://www.themealdb.com/api/json/v1/1/search.php?s=";
-  String searchByID= "https://www.themealdb.com/api/json/v1/1/lookup.php?i=";
-  String filterByIngredient= "https://www.themealdb.com/api/json/v1/1/filter.php?i=";
-  String searchByCategory="https://www.themealdb.com/api/json/v1/1/filter.php?c=";
-  StringBuffer response;
-  JSONObject jsonResult;
+  //App app;
+  static String searchByName= "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+  static String searchByID= "https://www.themealdb.com/api/json/v1/1/lookup.php?i=";
+  static String filterByIngredient= "https://www.themealdb.com/api/json/v1/1/filter.php?i=";
+  static String searchByCategory="https://www.themealdb.com/api/json/v1/1/filter.php?c=";
+  static StringBuffer response;
+  static JSONObject jsonResult;
 
-  public MealAPI(App app)
+/*  public MealAPI(App app)
   {
     this.app = app;
-  }
+  }*/
 
-  public ArrayList<Category> listCategories()
+  public static ArrayList<Category> listCategories()
   {
     ArrayList<Category> categoriesFound = new ArrayList<>();
     try {
@@ -66,15 +66,15 @@ public class MealAPI {
     return categoriesFound;
   }
 
-  public ArrayList<Meal> searchByID(String ID) {
+  public static ArrayList<Meal> searchByID(String ID) {
     return searchByIDOrName(searchByID + ID);
   }
 
-  public ArrayList<Meal> searchByName(String name) {
+  public static ArrayList<Meal> searchByName(String name) {
     return searchByIDOrName(searchByName + name);
   }
 
-  public ArrayList<Meal> searchByCategory(String category)
+  public static ArrayList<Meal> searchByCategory(String category)
   {
     ArrayList<Meal> mealsFound = new ArrayList<>();
     try {
@@ -119,7 +119,7 @@ public class MealAPI {
     return mealsFound;
   }
 
-  public ArrayList<Meal> searchByIDOrName(String urlString)
+  public static ArrayList<Meal> searchByIDOrName(String urlString)
   {
     ArrayList<Meal> mealsFound = new ArrayList<>();
     try {
@@ -191,11 +191,11 @@ public class MealAPI {
   }*/
 
   public static void main(String[] args) {
-    App app = new App();
-    app.mealAPI.searchByName("Teriyaki Chicken Casserole");
-    app.mealAPI.searchByID("52772");
-    app.mealAPI.listCategories();
-    app.mealAPI.searchByCategory("Beef");
+    //App app = new App();
+    MealAPI.searchByName("Teriyaki Chicken Casserole");
+    MealAPI.searchByID("52772");
+    MealAPI.listCategories();
+    MealAPI.searchByCategory("Beef");
   }
 }
 

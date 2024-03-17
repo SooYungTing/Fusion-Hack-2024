@@ -7,21 +7,21 @@ import java.net.URL;
 import org.json.JSONObject;
 
 public class WeatherAPI {
-  String apiKey = "73af00dfcb1d4c3f9ca123723241603";
-  StringBuffer response;
-  JSONObject jsonResult;
+  static String apiKey = "73af00dfcb1d4c3f9ca123723241603";
+  static StringBuffer response;
+  static JSONObject jsonResult;
 //  float temperature;
 //  float feels_like;
 //  String condition;
 //  int humidity;
-  App app;
+//  App app;
 
-  public WeatherAPI(App app)
+/*  public WeatherAPI(App app)
   {
     this.app = app;
-  }
+  }*/
 
-  String getURLString(String location)
+  public static String getURLString(String location)
   {
     return "http://api.weatherapi.com/v1/current.json?key=" + apiKey + "&q=" + location + "&aqi=no";
   }
@@ -29,7 +29,7 @@ public class WeatherAPI {
   /**
    * @param location the String of the city name, e.g. London, or Postcode, e.g. SO163FY
    */
-  public WeatherData query(String location)
+  public static WeatherData query(String location)
   {
     String urlString = getURLString(location.replaceAll(" ", ""));
 
@@ -83,7 +83,7 @@ public class WeatherAPI {
   }
 
   public static void main(String[] args) {
-    new App().weatherAPI.query("SO163FY");
+    WeatherAPI.query("SO163FY");
   }
 }
 

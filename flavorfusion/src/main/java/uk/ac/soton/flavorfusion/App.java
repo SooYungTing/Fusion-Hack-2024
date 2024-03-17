@@ -10,16 +10,16 @@ import javax.swing.*;
  */
 public class App 
 {
-    public WeatherAPI weatherAPI;
+/*    public WeatherAPI weatherAPI;
     public MealAPI mealAPI;
-    public MealCalculator mealCalculator;
+    public MealCalculator mealCalculator;*/
 
-    public App()
+/*    public App()
     {
         this.weatherAPI = new WeatherAPI(this);
         this.mealAPI = new MealAPI(this);
         this.mealCalculator = new MealCalculator(this);
-    }
+    }*/
 
     public static void main( String[] args )
     {
