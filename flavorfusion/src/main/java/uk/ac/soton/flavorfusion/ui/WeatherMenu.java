@@ -66,15 +66,87 @@ public class WeatherMenu extends JFrame{
 
     // 创建右边的面板，它占整个面板的 60%
     JPanel rightPanel = new JPanel(new GridLayout(10, 1)); // 10 行 1 列的网格布局
-    // 循环添加带有标题的条目
-    for (int i = 0; i < 10; i++) {
-      JPanel entryPanel = new JPanel(new BorderLayout());
-      JLabel labelTitle = new JLabel("Item " + (i+1) + ": "); // 替换为对应的标题，如"temperature: "
-      JTextField textField = new JTextField(); // 用于显示数据
-      entryPanel.add(labelTitle, BorderLayout.WEST);
-      entryPanel.add(textField, BorderLayout.CENTER);
-      rightPanel.add(entryPanel);
-    }
+
+    //添加带有标题的条目-------------------
+    JPanel entryPanel1 = new JPanel(new BorderLayout());
+    JLabel labelTitle1 = new JLabel("Temperature(°C):" + '\t'); // 替换为对应的标题，如"temperature: "
+    labelTitle1.setPreferredSize(new Dimension(135, labelTitle1.getPreferredSize().height));
+    JTextField textField1 = new JTextField(); // 用于显示数据
+    entryPanel1.add(labelTitle1, BorderLayout.WEST);
+    entryPanel1.add(textField1, BorderLayout.CENTER);
+    rightPanel.add(entryPanel1);
+
+    JPanel entryPanel2 = new JPanel(new BorderLayout());
+    JLabel labelTitle2 = new JLabel("Pressure:"); // 替换为对应的标题，如"temperature: "
+    labelTitle2.setPreferredSize(new Dimension(135, labelTitle2.getPreferredSize().height));
+    JTextField textField2 = new JTextField(); // 用于显示数据
+    entryPanel2.add(labelTitle2, BorderLayout.WEST);
+    entryPanel2.add(textField2, BorderLayout.CENTER);
+    rightPanel.add(entryPanel2);
+
+    JPanel entryPanel3 = new JPanel(new BorderLayout());
+    JLabel labelTitle3 = new JLabel("Humidity:"); // 替换为对应的标题，如"temperature: "
+    labelTitle3.setPreferredSize(new Dimension(135, labelTitle3.getPreferredSize().height));
+    JTextField textField3 = new JTextField(); // 用于显示数据
+    entryPanel3.add(labelTitle3, BorderLayout.WEST);
+    entryPanel3.add(textField3, BorderLayout.CENTER);
+    rightPanel.add(entryPanel3);
+
+    JPanel entryPanel4 = new JPanel(new BorderLayout());
+    JLabel labelTitle4 = new JLabel("UV Index:"); // 替换为对应的标题，如"temperature: "
+    labelTitle4.setPreferredSize(new Dimension(135, labelTitle4.getPreferredSize().height));
+    JTextField textField4 = new JTextField(); // 用于显示数据
+    entryPanel4.add(labelTitle4, BorderLayout.WEST);
+    entryPanel4.add(textField4, BorderLayout.CENTER);
+    rightPanel.add(entryPanel4);
+
+    JPanel entryPanel5 = new JPanel(new BorderLayout());
+    JLabel labelTitle5 = new JLabel("Weather Condition:"); // 替换为对应的标题，如"temperature: "
+    labelTitle5.setPreferredSize(new Dimension(135, labelTitle5.getPreferredSize().height));
+    JTextField textField5 = new JTextField(); // 用于显示数据
+    entryPanel5.add(labelTitle5, BorderLayout.WEST);
+    entryPanel5.add(textField5, BorderLayout.CENTER);
+    rightPanel.add(entryPanel5);
+
+    JPanel entryPanel6 = new JPanel(new BorderLayout());
+    JLabel labelTitle6 = new JLabel("Wind Speed:"); // 替换为对应的标题，如"temperature: "
+    labelTitle6.setPreferredSize(new Dimension(135, labelTitle6.getPreferredSize().height));
+    JTextField textField6 = new JTextField(); // 用于显示数据
+    entryPanel6.add(labelTitle6, BorderLayout.WEST);
+    entryPanel6.add(textField6, BorderLayout.CENTER);
+    rightPanel.add(entryPanel6);
+
+    JPanel entryPanel7 = new JPanel(new BorderLayout());
+    JLabel labelTitle7 = new JLabel("Precipitation:"); // 替换为对应的标题，如"temperature: "
+    labelTitle7.setPreferredSize(new Dimension(135, labelTitle7.getPreferredSize().height));
+    JTextField textField7 = new JTextField(); // 用于显示数据
+    entryPanel7.add(labelTitle7, BorderLayout.WEST);
+    entryPanel7.add(textField7, BorderLayout.CENTER);
+    rightPanel.add(entryPanel7);
+
+    JPanel entryPanel8 = new JPanel(new BorderLayout());
+    JLabel labelTitle8 = new JLabel("Visibility:"); // 替换为对应的标题，如"temperature: "
+    labelTitle8.setPreferredSize(new Dimension(135, labelTitle8.getPreferredSize().height));
+    JTextField textField8 = new JTextField(); // 用于显示数据
+    entryPanel8.add(labelTitle8, BorderLayout.WEST);
+    entryPanel8.add(textField8, BorderLayout.CENTER);
+    rightPanel.add(entryPanel8);
+
+    JPanel entryPanel9 = new JPanel(new BorderLayout());
+    JLabel labelTitle9 = new JLabel("Day/Night"); // 替换为对应的标题，如"temperature: "
+    labelTitle9.setPreferredSize(new Dimension(135, labelTitle9.getPreferredSize().height));
+    JTextField textField9 = new JTextField(); // 用于显示数据
+    entryPanel9.add(labelTitle9, BorderLayout.WEST);
+    entryPanel9.add(textField9, BorderLayout.CENTER);
+    rightPanel.add(entryPanel9);
+
+    JPanel entryPanel10 = new JPanel(new BorderLayout());
+    JLabel labelTitle10 = new JLabel("Wind Direction:"); // 替换为对应的标题，如"temperature: "
+    labelTitle10.setPreferredSize(new Dimension(135, labelTitle10.getPreferredSize().height));
+    JTextField textField10 = new JTextField(); // 用于显示数据
+    entryPanel10.add(labelTitle10, BorderLayout.WEST);
+    entryPanel10.add(textField10, BorderLayout.CENTER);
+    rightPanel.add(entryPanel10);
 
     // 添加到内容面板
     getContentPane().add(leftPanel, BorderLayout.WEST);
