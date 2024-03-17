@@ -2,12 +2,19 @@ package uk.ac.soton.flavorfusion.ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class InstructionMenu extends JFrame{
 
-    public InstructionMenu() {
+    private final JFrame previousWindow;
+
+    public InstructionMenu(JFrame previousWindow) {
         // Set the title of the window
         setTitle("FlavorFusion Instructions");
+
+        this.previousWindow = previousWindow;
+
 
         // Specify an action for the close button
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,10 +60,18 @@ public class InstructionMenu extends JFrame{
 
         // Create a back button
         JButton backButton = new JButton("Back");
-        backButton.addActionListener(e -> {
-            // Add action to go back, e.g., close current window or show previous window
-            dispose(); // For demonstration, simply close this window
-        });//TODO: go back to main menu
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Hide the OptionMenu
+                setVisible(false); // 修改了这里，隐藏了当前的 OptionMenu 窗口
+
+                // Show the previous window (MainMenu)
+                if (previousWindow != null) {
+                    previousWindow.setVisible(true); // 修改了这里，显示之前的 MainMenu 窗口
+                }
+            }
+        });
 
         // Create a panel for the back button with BorderLayout
         JPanel buttonPanel = new JPanel(new BorderLayout());
@@ -68,10 +83,5 @@ public class InstructionMenu extends JFrame{
 
         // Add the button panel to the SOUTH region of the JFrame
         add(buttonPanel, BorderLayout.SOUTH);
-    }
-
-
-    public static void main(String[] args) {
-        new InstructionMenu(); // Create and show the instruction page
     }
 }
