@@ -13,6 +13,7 @@ import javax.swing.*;
 public class RecipeMenu extends JFrame {
 
   private JFrame previousWindow;
+  JScrollPane scrollPane;
   Meal meal;
 
   public RecipeMenu(JFrame previousWindow, Meal meal) {
@@ -42,9 +43,12 @@ public class RecipeMenu extends JFrame {
 
     // Center the window on the screen
     setLocationRelativeTo(null);
-
     // Make the window visible
     setVisible(true);
+    EventQueue.invokeLater(() ->
+    {
+      scrollPane.getVerticalScrollBar().setValue(0);
+    });
   }
 
   private void initComponents() {
@@ -68,16 +72,16 @@ public class RecipeMenu extends JFrame {
 
     // HTML content string with your original text and an image
     String htmlContent =
-        "<html><body style='font-family:Arial;font-size:16px;color:black;'>"
+        "<html><body style='font-family:Arial;font-size:15px;color:black;'>"
             + "<img src='"
             + imagePath
-            + "' style='width:150px;height:auto;'><br><br>" + "<h1>"+ meal.name+ "</h1><h2>Category: "+ meal.category + "</h2><h2>Ingredients</h2>" + meal.generateHtmlTable() + "<h2>Cooking Instructions</h2><p>"
+            + "' style='width:100px;height:auto;'><br><br>" + "<h1>"+ meal.name+ "</h1><h2>Category: "+ meal.category + "</h2><h2>Ingredients</h2>" + meal.generateHtmlTable() + "<h2>Cooking Instructions</h2><p>"
                 +inst + "</p>"
             + "</body></html>";
 
     textPane.setText(htmlContent);
 
-    JScrollPane scrollPane = new JScrollPane(textPane);
+    scrollPane = new JScrollPane(textPane);
     scrollPane.setOpaque(false); // Make JScrollPane transparent
     scrollPane.getViewport().setOpaque(false); // Make its viewport transparent
     scrollPane.setBorder(null); // Remove border if needed
